@@ -27,18 +27,34 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import AddFrouderScreen from './screens/AddFrouderScreen';
 import SearchScreen from './screens/SearchScreen';
 
-import  {createSwitchNavigator, createAppContainer} from 'react-navigation';
-
-
+import  {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 
 
 const AppSwitchNavigator = createSwitchNavigator({
-  Welcome:{screen: WelcomeScreen},
+  Welcome: {screen: WelcomeScreen}
+},
+    {
+    navigationOptions :({navigation}) =>{
+      const {routName} = navigation.state.routes[navigation.state.index];
+      return{
+        header: null,
+        headerTitle: routName
+      };
+    }
+})
+const appStackNavigator = createStackNavigator({
+  AppSwitchNavigator,
+  Search:{screen:SearchScreen},
   AddFrouder: {screen: AddFrouderScreen},
-  Search:{screen:SearchScreen}
 });
 
-const AppContainer = createAppContainer(AppSwitchNavigator);
+
+
+
+
+
+
+const AppContainer = createAppContainer(appStackNavigator);
 
 
 const App = () => {

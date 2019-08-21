@@ -3,6 +3,9 @@ import {Text, View} from 'react-native';
 
 
 class AddFrouderScreen extends Component {
+    static navigationOptions = {
+        title: 'Добавить мошенника',
+    };
     render(){
         return (
             <View>

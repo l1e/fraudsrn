@@ -1,9 +1,12 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 
 
 class WelcomeScreen extends Component {
+    static navigationOptions = {
+        header: null,
+    };
     render(){
         return (
             <View style={styles.body}>
