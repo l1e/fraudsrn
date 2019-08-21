@@ -1,0 +1,1 @@
+1) If app dont build with apk for smartphone, make  comand in your app dir - ' <code>  cd android && ./gradlew clean && ./gradlew assembleRelease </code> '. It took from https://github.com/facebook/react-native/issues/6745 .
