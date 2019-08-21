@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
     },
     input:{
-        width: 220,
+        width: '70%',
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
         color:  '#909497',
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     inputDescription:{
-        width: 220,
+        width: '70%',
         height: 150,
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
