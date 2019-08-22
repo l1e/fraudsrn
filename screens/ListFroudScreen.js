@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Text, View, Button, StyleSheet,TextInput, Alert} from 'react-native';
+import Itemfroud from '../component/Itemfroud';
 
 import {db} from '../firebase/config';
 
@@ -20,18 +21,7 @@ class ListFroudScreen extends Component {
             let data = snapshot.val();
             let items = Object.values(data);
             this.setState({ items });
-            console.log('Hiii');
-            // Alert(this.state.items);
         });
-    }
-    handlerInputSearch = (val)=>{
-        this.setState({
-            searchInfo: val
-        });
-
-    };
-    submitISearch= () =>{
-        this.props.navigation.navigate('AddFrouder')
     };
     render(){
         return (
@@ -47,8 +37,15 @@ class ListFroudScreen extends Component {
                     <Text style={styles.frouder__additionalInformation}><Text style={styles.frouder__phone}> +380674853274 </Text> <Text style={styles.frouder__personalInfo} > Иван Васильевич </Text>  </Text>
                 </View>
                 <Text>Результат:
-                    {this.state.items.map((item,i) => <Text key={i}>{item.card}</Text>)}
+                    {/*{this.state.items.map((item,i) => <Text key={i}>{item.card}</Text>)}*/}
                 </Text>
+                <View >
+                    {this.state.items.length > 0 ? (
+                        <Itemfroud items={this.state.items} />
+                    ) : (
+                        <Text>No items</Text>
+                    )}
+                </View>
             </View>
         );
     }

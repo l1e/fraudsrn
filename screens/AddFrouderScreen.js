@@ -5,7 +5,11 @@ import {db} from '../firebase/config';
 
 let addItem = item => {
     db.ref('/items').push({
-        content: item
+        firstname: item.name,
+        lastname: item.lastname ,
+        phone: item.number ,
+        card: item.card ,
+        desc: item.desc ,
     });
 };
 
