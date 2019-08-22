@@ -1,7 +1,7 @@
 import Firebase from 'firebase';
 
 let config = {
-    apiKey: "<apiKeyy>",
+    apiKey: "<apiKey>",
     authDomain: "<authDomain>",
     databaseURL: "<databaseURL>",
     projectId: "<projectId>",
