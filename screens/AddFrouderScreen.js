@@ -7,8 +7,9 @@ let addItem = item => {
     db.ref('/items').push({
         firstname: item.name,
         lastname: item.lastname ,
-        phone: item.number ,
+        phone: item.phone ,
         card: item.card ,
+        shortdesc: item.shortdesc,
         desc: item.desc ,
     });
 };
@@ -26,6 +27,7 @@ class AddFrouderScreen extends Component {
             froudNameLast: '',
             froudNumber: '',
             froudCreditCard: '',
+            froudShortDescription: '',
             froudDescription: ''
         }
     };
@@ -49,19 +51,32 @@ class AddFrouderScreen extends Component {
             froudCreditCard: val
         });
     };
+
+    hadlerShortDescription = (val)=>{
+        this.setState({
+            froudShortDescription: val
+        });
+    };
+
     hadlerDescription = (val)=>{
         this.setState({
             froudDescription: val
         });
     };
     submitInformation = () => {
-        addItem({
-            'name': this.state.froudName,
-            'lastname': this.state.froudNameLast,
-            'number': this.state.froudNumber,
-            'card': this.state.froudCreditCard,
-            'desc': this.state.froudDescription});
-        Alert.alert('Item saved successfully');
+        if (this.state.froudShortDescription != '' && this.state.froudDescription != '') {
+            addItem({
+                'name': this.state.froudName,
+                'lastname': this.state.froudNameLast,
+                'phone': this.state.froudNumber,
+                'card': this.state.froudCreditCard,
+                'shortdesc': this.state.froudShortDescription,
+                'desc': this.state.froudDescription});
+            Alert.alert('Мошенник добавлен','Мошенник добавлен');
+        }else{
+            Alert.alert("Ошибка","Обязательным является поле с кратким описанием и описанием.");
+        }
+
     };
 
     render(){
@@ -91,9 +106,16 @@ class AddFrouderScreen extends Component {
                            placeholder='Номер кредитной карточки: '
                            value={this.state.froudCreditCard}
                 />
+                <TextInput style={styles.inputShortDescription}
+                           onChangeText={this.hadlerShortDescription}
+                           placeholder='Краткое описание '
+                           value={this.state.froudShortDescription}
+                           numberOfLines={4}
+                           multiline={true}
+                />
                 <TextInput style={styles.inputDescription}
                            onChangeText={this.hadlerDescription}
-                           placeholder='Описание: '
+                           placeholder='Описание '
                            value={this.state.froudDescription}
                            numberOfLines={4}
                            multiline={true}
@@ -116,7 +138,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#e8ebf4',
-        paddingTop: 90,
+        paddingTop: 40,
         paddingBottom: 40,
     },
     title:{
@@ -138,15 +160,25 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         paddingBottom: 20,
     },
-    inputDescription:{
+    inputShortDescription:{
         width: '70%',
-        height: 150,
+        height: 70,
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
         color:  '#909497',
         textAlign: 'left',
 
-    }
+    },
+    inputDescription:{
+        width: '70%',
+        height: 140,
+        borderBottomColor: '#909497',
+        borderBottomWidth: 2,
+        color:  '#909497',
+        textAlign: 'left',
+
+    },
+
 });
 
 

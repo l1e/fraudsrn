@@ -28,7 +28,8 @@ import {
 import WelcomeScreen from './screens/WelcomeScreen';
 import AddFrouderScreen from './screens/AddFrouderScreen';
 import SearchScreen from './screens/SearchScreen';
-import ListFroudScreen from './screens/ListFroudScreen'
+import ListFroudScreen from './screens/ListFroudScreen';
+import FiltrFroudListScreen from './screens/FiltrFroudListScreen';
 
 import  {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 
@@ -53,6 +54,7 @@ const appStackNavigator = createStackNavigator({
   Search:{screen:SearchScreen},
   AddFrouder: {screen: AddFrouderScreen},
   ListFrouder: {screen: ListFroudScreen},
+  FiltrFroud: {screen:FiltrFroudListScreen},
 });
 
 

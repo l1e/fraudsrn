@@ -23,6 +23,12 @@ class WelcomeScreen extends Component {
                     <Text  style={styles.textButton}>Поиск мошенника</Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity
+                    onPress={() =>this.props.navigation.navigate('ListFrouder')}
+                    style={styles.button}
+                >
+                    <Text  style={styles.textButton}>Список мошенников</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -43,7 +49,6 @@ const styles = StyleSheet.create({
         margin: 4
     },
     textButton:{
-       backgroundColor: '#7478a9',
     },
 
 });
