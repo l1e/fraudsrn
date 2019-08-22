@@ -1,7 +1,7 @@
 import Firebase from 'firebase';
 
 let config = {
-    apiKey: "<apiKey>",
+    apiKey: "<apiKeyy>",
     authDomain: "<authDomain>",
     databaseURL: "<databaseURL>",
     projectId: "<projectId>",
@@ -9,8 +9,6 @@ let config = {
     messagingSenderId: "<messagingSenderId>"
 };
 
-
 let app = Firebase.initializeApp(config);
-
 
 export const db = app.database();
