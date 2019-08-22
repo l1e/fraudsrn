@@ -23,6 +23,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
 import WelcomeScreen from './screens/WelcomeScreen';
 import AddFrouderScreen from './screens/AddFrouderScreen';
 import SearchScreen from './screens/SearchScreen';
@@ -41,7 +42,10 @@ const AppSwitchNavigator = createSwitchNavigator({
         headerTitle: routName
       };
     }
-})
+});
+
+
+
 const appStackNavigator = createStackNavigator({
   AppSwitchNavigator,
   Search:{screen:SearchScreen},
