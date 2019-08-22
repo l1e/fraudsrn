@@ -24,9 +24,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+
 import WelcomeScreen from './screens/WelcomeScreen';
 import AddFrouderScreen from './screens/AddFrouderScreen';
 import SearchScreen from './screens/SearchScreen';
+import ListFroudScreen from './screens/ListFroudScreen'
 
 import  {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 
@@ -50,6 +52,7 @@ const appStackNavigator = createStackNavigator({
   AppSwitchNavigator,
   Search:{screen:SearchScreen},
   AddFrouder: {screen: AddFrouderScreen},
+  ListFrouder: {screen: ListFroudScreen},
 });
 
 

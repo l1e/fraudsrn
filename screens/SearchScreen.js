@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View, Button, Alert, StyleSheet,TextInput} from 'react-native';
+import {Text, View, Button, StyleSheet,TextInput} from 'react-native';
 
 class SearchScreen extends Component {
     static navigationOptions = {
@@ -16,6 +16,10 @@ class SearchScreen extends Component {
         this.setState({
             searchInfo: val
         });
+
+    };
+    submitISearch= () =>{
+        this.props.navigation.navigate('ListFrouder')
     };
     render(){
         return (

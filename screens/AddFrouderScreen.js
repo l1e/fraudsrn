@@ -1,11 +1,20 @@
 import React,{Component} from 'react';
-import {Text, View,StyleSheet, TextInput, Button, ScrollView} from 'react-native';
+import {Text, View,StyleSheet, TextInput, Button, ScrollView, Alert} from 'react-native';
+
+import {db} from '../firebase/config';
+
+let addItem = item => {
+    db.ref('/items').push({
+        content: item
+    });
+};
 
 
 class AddFrouderScreen extends Component {
     static navigationOptions = {
         title: 'Добавить мошенника',
     };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -13,10 +22,10 @@ class AddFrouderScreen extends Component {
             froudNameLast: '',
             froudNumber: '',
             froudCreditCard: '',
-            froudDescription: '',
+            froudDescription: ''
         }
     };
-    hadlerChangeName = (val)=>{
+    hadlerChangeName  = (val)=>{
         this.setState({
             froudName: val
         });
@@ -41,11 +50,19 @@ class AddFrouderScreen extends Component {
             froudDescription: val
         });
     };
-    submitInformation = () =>{
-
+    submitInformation = () => {
+        addItem({
+            'name': this.state.froudName,
+            'lastname': this.state.froudNameLast,
+            'number': this.state.froudNumber,
+            'card': this.state.froudCreditCard,
+            'desc': this.state.froudDescription});
+        Alert.alert('Item saved successfully');
     };
+
     render(){
         return (
+            <ScrollView>
             <View style={styles.container}>
                 <View style={styles.form_titles}>
                     <Text style={styles.title}>Добавте подробную информацию о мошеннике.</Text>
@@ -53,12 +70,12 @@ class AddFrouderScreen extends Component {
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeName}
                            placeholder='Имя'
-                           value={this.state.frousadName}
+                           value={this.state.froudName}
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeNameLast}
                            placeholder='Фамилия'
-                           value={this.state.frousadNameLast}
+                           value={this.state.froudNameLast}
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeNumber}
@@ -85,6 +102,7 @@ class AddFrouderScreen extends Component {
                     />
                 </View>
             </View>
+            </ScrollView>
         );
     }
 }
@@ -95,6 +113,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#e8ebf4',
         paddingTop: 90,
+        paddingBottom: 40,
     },
     title:{
         textAlign: 'center',
@@ -112,8 +131,8 @@ const styles = StyleSheet.create({
         paddingBottom: 30,
     },
     button:{
-        marginTop: 20,
-        marginBottom: 20,
+        paddingTop: 20,
+        paddingBottom: 20,
     },
     inputDescription:{
         width: '70%',
