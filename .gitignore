@@ -59,5 +59,6 @@ buck-out/
 /ios/Pods/
 
 
-#  My custom ignore files
+# My custom ignore files
 firebase/
+firebase
