@@ -74,6 +74,11 @@ const styles = StyleSheet.create({
     button:{
         marginTop: 20,
     },
+    title:{
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
 
 export default SearchScreen

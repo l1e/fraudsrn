@@ -143,6 +143,8 @@ const styles = StyleSheet.create({
     },
     title:{
         textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         color: '#554433',
         paddingBottom: 0,
     },
