@@ -81,7 +81,7 @@ class AddFrouderScreen extends Component {
 
     render(){
         return (
-            <ScrollView>
+            <ScrollView style={styles.body}>
             <View style={styles.container}>
                 <View style={styles.form_titles}>
                     <Text style={styles.title}>Добавте подробную информацию о мошеннике.</Text>
@@ -133,13 +133,16 @@ class AddFrouderScreen extends Component {
     }
 }
 const styles = StyleSheet.create({
-    container: {
+    body:{
         flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#e8ebf4',
         paddingTop: 40,
         paddingBottom: 40,
+        backgroundColor: '#e8ebf4',
+    },
+    container: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+
     },
     title:{
         textAlign: 'center',
