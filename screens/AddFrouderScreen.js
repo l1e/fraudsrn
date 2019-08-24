@@ -135,7 +135,7 @@ class AddFrouderScreen extends Component {
 const styles = StyleSheet.create({
     body:{
         flex: 1,
-        paddingTop: 40,
+        paddingTop: 70,
         paddingBottom: 40,
         backgroundColor: '#e8ebf4',
     },
