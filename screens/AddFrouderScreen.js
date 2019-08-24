@@ -167,21 +167,17 @@ const styles = StyleSheet.create({
     },
     inputShortDescription:{
         width: '70%',
-        height: 70,
+        height: 60,
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
         color:  '#909497',
-        textAlign: 'left',
-
     },
     inputDescription:{
         width: '70%',
-        height: 140,
+        height: 100,
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
         color:  '#909497',
-        textAlign: 'left',
-
     },
 
 });
