@@ -29,6 +29,12 @@ class WelcomeScreen extends Component {
                 >
                     <Text  style={styles.textButton}>Список мошенников</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() =>this.props.navigation.navigate('AboutApp')}
+                    style={styles.aboutus}
+                >
+                    <Text  style={styles.textButton}>О приложении</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -40,7 +46,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#e8ebf4',
    },
     button:{
-       flex:1,
+       flex:4,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#000000',
+        backgroundColor: '#7478a9',
+        margin: 4
+    },
+    aboutus:{
+        flex:1,
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
