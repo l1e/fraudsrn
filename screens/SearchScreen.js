@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import {Text, View, ScrollView, Button, StyleSheet,TextInput, Alert} from 'react-native';
 
+let placeHolderColor= '#909497';
+let inputText= '#25282b';
+
 class SearchScreen extends Component {
 
     static navigationOptions = {
@@ -36,8 +39,10 @@ class SearchScreen extends Component {
                         style={styles.searchInput}
                         onChangeText={this.handlerInputSearch}
                         placeholder='Введите известную информацию о мошеннике'
+                        placeholderTextColor={placeHolderColor}
                         numberOfLines={20}
                         value={this.state.searchInfo}
+                        maxLength={20}
                     />
                     <Button
                         onPress={this.submitISearch}
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
         width: '90%',
         borderColor: '#909497',
         borderWidth: 1,
-        color:  '#909497',
+        color:  inputText,
         textAlign: 'center',
         marginBottom: 20,
 

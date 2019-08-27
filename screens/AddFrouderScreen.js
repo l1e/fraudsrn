@@ -15,6 +15,13 @@ let addItem = item => {
 };
 
 
+// Set color constants START
+let placeHolderColor= '#909497';
+let inputText= '#25282b';
+
+
+// Set color constants END
+
 class AddFrouderScreen extends Component {
     static navigationOptions = {
         title: 'Добавить мошенника',
@@ -89,35 +96,49 @@ class AddFrouderScreen extends Component {
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeName}
                            placeholder='Имя'
+                           placeholderTextColor={placeHolderColor}
                            value={this.state.froudName}
+                           maxLength={10}
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeNameLast}
                            placeholder='Фамилия'
+                           placeholderTextColor={placeHolderColor}
                            value={this.state.froudNameLast}
+                           maxLength={20}
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeNumber}
-                           placeholder='Номер телефона'
+                           placeholder='0XXXXXXXXX'
+                           placeholderTextColor={placeHolderColor}
                            value={this.state.froudNumber}
+                           maxLength={10}
+                           keyboardType={'number-pad'}
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerCreditCardNumber}
-                           placeholder='Номер кредитной карточки: '
+                           placeholder='XXXX XXXX XXXX XXXX'
+                           placeholderTextColor={placeHolderColor}
                            value={this.state.froudCreditCard}
+                           maxLength={19}
+                           keyboardType={'numeric'}
                 />
                 <TextInput style={styles.inputShortDescription}
                            onChangeText={this.hadlerShortDescription}
                            placeholder='Краткое описание '
+                           placeholderTextColor={placeHolderColor}
                            value={this.state.froudShortDescription}
                            numberOfLines={4}
+                           maxLength={90}
                            multiline={true}
                 />
                 <TextInput style={styles.inputDescription}
                            onChangeText={this.hadlerDescription}
                            placeholder='Описание '
+                           placeholderTextColor={placeHolderColor}
                            value={this.state.froudDescription}
                            numberOfLines={4}
+                           maxLength={190}
                            multiline={true}
                 />
                 <View style={styles.button}>
@@ -155,7 +176,7 @@ const styles = StyleSheet.create({
         width: '70%',
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
-        color:  '#909497',
+        color:  inputText,
         textAlign: 'left',
     },
     form_titles:{
@@ -170,14 +191,14 @@ const styles = StyleSheet.create({
         height: 60,
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
-        color:  '#909497',
+        color:  inputText,
     },
     inputDescription:{
         width: '70%',
         height: 100,
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
-        color:  '#909497',
+        color:  inputText,
     },
 
 });
