@@ -13,7 +13,8 @@ class ListFroudScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            itemsStatus: 'No items'
         }
     };
     componentDidMount() {
@@ -22,7 +23,9 @@ class ListFroudScreen extends Component {
             let items = Object.values(data);
             this.setState({ items });
         });
+
     };
+
     render(){
         return (
             <ScrollView style={styles.body}>
@@ -30,7 +33,7 @@ class ListFroudScreen extends Component {
                     {this.state.items.length > 0 ? (
                         <Itemfroud items={this.state.items} />
                     ) : (
-                        <Text>No items</Text>
+                        <Text>{this.state.itemsStatus}</Text>
                     )}
                 </View>
             </ScrollView>
