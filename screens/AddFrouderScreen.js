@@ -109,18 +109,18 @@ class AddFrouderScreen extends Component {
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerChangeNumber}
-                           placeholder='0XXXXXXXXX'
+                           placeholder='Номер телефона'
                            placeholderTextColor={placeHolderColor}
                            value={this.state.froudNumber}
-                           maxLength={10}
+                           maxLength={15}
                            keyboardType={'number-pad'}
                 />
                 <TextInput style={styles.input}
                            onChangeText={this.hadlerCreditCardNumber}
-                           placeholder='XXXX XXXX XXXX XXXX'
+                           placeholder='Номер карты мошенника'
                            placeholderTextColor={placeHolderColor}
                            value={this.state.froudCreditCard}
-                           maxLength={19}
+                           maxLength={25}
                            keyboardType={'numeric'}
                 />
                 <TextInput style={styles.inputShortDescription}

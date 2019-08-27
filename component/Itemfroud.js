@@ -12,11 +12,11 @@ export default class itemfroud extends Component {
                 {this.props.items.map((item, index) => {
                     return (
                         <View key={index} style={styles.frouder} >
-                            <Text style={styles.frouder__text}>  {item.shortdesc}</Text>
-                            <Text style={styles.frouder__description}>  {item.desc}</Text>
+                            <Text style={styles.frouder__text}>{item.shortdesc}</Text>
+                            <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{item.desc}</Text>
                             <View style={styles.frouder__additionalInformation}>
                                 <Text style={styles.frouder__phone}>{item.phone}</Text>
-                                <Text style={styles.frouder__personalInfo} >{item.firstname}  {item.lastname} </Text>
+                                <Text style={styles.frouder__personalInfo} >{item.firstname+'\t'}{item.lastname} </Text>
                             </View>
                         </View>
                     );
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
         textAlign: 'right',
     },
     frouder__description:{
-
+        paddingTop: 5,
     },
 });

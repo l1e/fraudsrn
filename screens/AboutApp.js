@@ -16,7 +16,7 @@ class AboutApp extends Component {
                         Vepbit@gmail.com
                     </Text>
                     <Text style={styles.text}>
-                        version: 0.1.4
+                        version: 0.2.4
                     </Text>
                 </View>
         );
