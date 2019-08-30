@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native'
+import {View, Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
 import {db} from '../firebase/config';
 let itemsRef = db.ref('/items');
 
@@ -14,7 +14,7 @@ class FiltrFroudListScreen extends Component {
         this.state = {
             items: [],
             filtredData :[],
-            itemsStatus:'nothing',
+            itemsStatus:'Ничего не найденно.',
         }
     };
 
@@ -66,8 +66,16 @@ class FiltrFroudListScreen extends Component {
                     {this.state.filtredData.length > 0 ? (
                         <Itemfroud items={this.state.filtredData} />
                     ) : (
-                        <Text>{this.state.itemsStatus}</Text>
-                    )}
+                        <View>
+                            <Text style={styles.nothing}>{this.state.itemsStatus}</Text>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.goBack()}
+                                style={styles.button}
+                            >
+                                <Text  style={styles.textButton}>Ввести данные еще раз.</Text>
+                            </TouchableOpacity>
+                        </View>
+                        )}
                 </View>
             </ScrollView>
 
@@ -84,6 +92,21 @@ const styles = StyleSheet.create({
     content:{
         paddingTop: 10,
         paddingBottom: 30,
-    }
+    },
+    nothing:{
+        textAlign: 'center',
+    },
+    button:{
+        textAlign: 'center',
+        borderColor:  '#808080',
+        borderWidth: 1,
+        marginTop: 20,
+        backgroundColor: '#E6E6FA',
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+    textButton:{
+      textAlign: 'center',
+    },
 });
 export default FiltrFroudListScreen;
