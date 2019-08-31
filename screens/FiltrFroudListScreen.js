@@ -12,50 +12,34 @@ class FiltrFroudListScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
             filtredData :[],
             itemsStatus:'Ничего не найденно.',
-        }
-    };
-
-    checkExistWord =(item,filtredWord)=>{
-        let list = [];
-        let includeWord = 0 ;
-        let exsistWordsArray=[];
-        for (let i= 0 ; item.length > i  ;i++){
-            let line = item[i].card+' '+item[i].desc+' '+ item[i].firstname+' '+item[i].lastname+' '+ item[i].phone;
-            if (line.includes(filtredWord)){
-                exsistWordsArray.push(item[i]);
-            };
-            // list.push(line);
         };
-        return exsistWordsArray;
+    };
+    //Filter Data by keywords.
+    filtredDataByKeyWords =(item,filtredWord)=>{
+        let filtredData=[];
+        for (let i= 0 ; item.length > i  ;i++){
+            //Transform Object to string for check exist words.
+            let objToString = item[i].card+' '+item[i].desc+' '+ item[i].firstname+' '+item[i].lastname+' '+ item[i].phone;
+            if (objToString.includes(filtredWord)){
+                filtredData.push(item[i]);
+            }
+        }
+        return filtredData;
     };
     componentDidMount() {
+        //Get key words from search form.
         const { navigation } = this.props;
         const keyword = navigation.getParam('keyword', 'Keyword');
+        let dataToRender = [];
 
-        console.log('Helllo 1');
-        console.log(keyword);
-        console.log('Helllo 1');
-        let dataa = [];
+        //Get data from database.
         itemsRef.on('value', snapshot => {
             let data = snapshot.val();
             let items = Object.values(data);
-            this.setState({ items });
-            // let item = items[1];
-            // let line = item.card+' '+item.desc+' '+ item.firstname+' '+item.lastname+' '+ item.phone ;
-            // console.log(this.state.items);
-            // console.log(line);
-            // console.log('exsist: '+line.includes('0834323773'));
-            // console.log('Filstred list'+this.checkExistWord(items, '2222 2222 3333 4444'));
-            // data.push(this.checkExistWord(items, this.state.searchInfo));
-            dataa = this.checkExistWord(items, keyword);
-            this.setState({filtredData: dataa});
-            console.log('Filtred data START');
-            console.log(this.state.filtredData);
-            console.log('Filtred data END');
-
+            dataToRender = this.filtredDataByKeyWords(items, keyword);
+            this.setState({filtredData: dataToRender});
         });
     }
 
@@ -67,7 +51,7 @@ class FiltrFroudListScreen extends Component {
                         <Itemfroud items={this.state.filtredData} />
                     ) : (
                         <View>
-                            <Text style={styles.nothing}>{this.state.itemsStatus}</Text>
+                            <Text style={styles.error_text}>{this.state.itemsStatus}</Text>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.goBack()}
                                 style={styles.button}
@@ -93,7 +77,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 30,
     },
-    nothing:{
+    error_text:{
         textAlign: 'center',
     },
     button:{
