@@ -51,7 +51,7 @@ class FiltrFroudListScreen extends Component {
                         <Itemfroud items={this.state.filtredData} />
                     ) : (
                         <View>
-                            <Text style={styles.error_text}>{this.state.itemsStatus}</Text>
+                            <Text style={styles.text_error}>{this.state.itemsStatus}</Text>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.goBack()}
                                 style={styles.button}
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 30,
     },
-    error_text:{
+    text_error:{
         textAlign: 'center',
     },
     button:{
