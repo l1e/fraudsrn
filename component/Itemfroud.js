@@ -16,7 +16,7 @@ export default class itemfroud extends Component {
                             <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{item.desc}</Text>
                             <View style={styles.frouder__additionalInformation}>
                                 <Text style={styles.frouder__phone}>{item.phone}</Text>
-                                <Text style={styles.frouder__personalInfo} >{item.firstname+'\t'}{item.lastname} </Text>
+                                <Text style={styles.frouder__personalInfo} >{item.firstname+'\b'}{item.lastname} </Text>
                             </View>
                         </View>
                     );

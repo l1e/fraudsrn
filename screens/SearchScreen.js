@@ -16,18 +16,21 @@ class SearchScreen extends Component {
             searchInfo: '',
         }
     };
+
     handlerInputSearch = (val)=>{
         this.setState({
             searchInfo: val
         });
     };
-
+    clearInput= ()=>{
+        this.setState({searchInfo: ''})
+    };
 
     submitISearch= () =>{
         if (this.state.searchInfo != '') {
             this.props.navigation.navigate('FiltrFroud',{
                 keyword: this.state.searchInfo});
-            console.log('keyword:'+this.state.searchInfo);
+                this.clearInput();
         }else{
             Alert.alert("Ошибка","Введите информацию для поиска");
         }

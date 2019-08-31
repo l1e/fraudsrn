@@ -35,8 +35,18 @@ class AddFrouderScreen extends Component {
             froudNumber: '',
             froudCreditCard: '',
             froudShortDescription: '',
-            froudDescription: ''
+            froudDescription: '',
         }
+    };
+    clearInput= ()=>{
+        this.setState({
+            froudName: '',
+            froudNameLast: '',
+            froudNumber: '',
+            froudCreditCard: '',
+            froudShortDescription: '',
+            froudDescription: ''
+        })
     };
     hadlerChangeName  = (val)=>{
         this.setState({
@@ -80,6 +90,7 @@ class AddFrouderScreen extends Component {
                 'shortdesc': this.state.froudShortDescription,
                 'desc': this.state.froudDescription});
             Alert.alert('Мошенник добавлен','Мошенник добавлен');
+            this.clearInput();
         }else{
             Alert.alert("Ошибка","Обязательным является поле с кратким описанием и описанием.");
         }
