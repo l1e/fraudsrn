@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView} from 'react-native'
+
+import Itemfroud from '../component/Itemfroud';
+
 import {db} from '../firebase/config';
 let itemsRef = db.ref('/items');
 
-import Itemfroud from '../component/Itemfroud';
+
 
 class FiltrFroudListScreen extends Component {
     static navigationOptions = {

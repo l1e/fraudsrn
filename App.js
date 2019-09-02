@@ -6,14 +6,9 @@
  * @flow
  */
 
-import React, {Fragment, Component} from 'react';
+import React, {Fragment} from 'react';
 import {
   StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button ,
 } from 'react-native';
 
 
@@ -40,7 +35,6 @@ const AppSwitchNavigator = createSwitchNavigator({
 });
 
 
-
 const appStackNavigator = createStackNavigator({
   AppSwitchNavigator,
   Search:{screen:SearchScreen},
@@ -49,11 +43,6 @@ const appStackNavigator = createStackNavigator({
   FiltrFroud: {screen:FiltrFroudListScreen},
   AboutApp: {screen:AboutApp},
 });
-
-
-
-
-
 
 
 const AppContainer = createAppContainer(appStackNavigator);
@@ -66,9 +55,5 @@ const App = () => {
       </Fragment>
   );
 };
-
-const styles = StyleSheet.create({
-
-});
 
 export default App;

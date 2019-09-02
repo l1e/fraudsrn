@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import {Text, View, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
+
 import Itemfroud from '../component/Itemfroud';
 
 import {db} from '../firebase/config';
-
 let itemsRef = db.ref('/items');
+
 
 class ListFroudScreen extends Component {
     static navigationOptions = {
