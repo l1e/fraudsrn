@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
 import Itemfroud from '../component/Itemfroud';
 
 import {db} from '../firebase/config';
@@ -27,15 +27,17 @@ class ListFroudScreen extends Component {
     };
     render(){
         return (
-            <ScrollView style={styles.body}>
-                <View style={styles.content}>
-                    {this.state.items.length > 0 ? (
-                        <Itemfroud items={this.state.items} />
-                    ) : (
-                        <Text>{this.state.itemsStatus}</Text>
-                    )}
-                </View>
-            </ScrollView>
+            <SafeAreaView style={styles.body}>
+                <ScrollView >
+                    <View style={styles.content}>
+                        {this.state.items.length > 0 ? (
+                            <Itemfroud items={this.state.items} />
+                        ) : (
+                            <Text>{this.state.itemsStatus}</Text>
+                        )}
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         );
     }
 }
@@ -45,11 +47,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#e8ebf4',
         paddingTop: 10,
-        paddingBottom: 50,
+        paddingBottom: 0,
     },
     content:{
         paddingTop: 10,
-        paddingBottom: 30,
+        paddingBottom: 20,
     }
 });
 

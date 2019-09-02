@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView} from 'react-native'
 import {db} from '../firebase/config';
 let itemsRef = db.ref('/items');
 
@@ -45,23 +45,25 @@ class FiltrFroudListScreen extends Component {
 
     render(){
         return(
-            <ScrollView style={styles.body}>
-                <View style={styles.content}>
-                    {this.state.filtredData.length > 0 ? (
-                        <Itemfroud items={this.state.filtredData} />
-                    ) : (
-                        <View>
-                            <Text style={styles.text_error}>{this.state.itemsStatus}</Text>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.goBack()}
-                                style={styles.button}
-                            >
-                                <Text  style={styles.textButton}>Ввести данные еще раз.</Text>
-                            </TouchableOpacity>
-                        </View>
-                        )}
-                </View>
-            </ScrollView>
+            <SafeAreaView style={styles.body}>
+                <ScrollView>
+                    <View style={styles.content}>
+                        {this.state.filtredData.length > 0 ? (
+                            <Itemfroud items={this.state.filtredData} />
+                        ) : (
+                            <View>
+                                <Text style={styles.text_error}>{this.state.itemsStatus}</Text>
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.goBack()}
+                                    style={styles.button}
+                                >
+                                    <Text  style={styles.textButton}>Ввести данные еще раз.</Text>
+                                </TouchableOpacity>
+                            </View>
+                            )}
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
 
         )
     }
@@ -70,12 +72,10 @@ const styles = StyleSheet.create({
     body:{
         flex: 1,
         backgroundColor: '#e8ebf4',
-        paddingTop: 10,
-        paddingBottom: 50,
     },
     content:{
-        paddingTop: 10,
-        paddingBottom: 30,
+        paddingTop: 20,
+        paddingBottom: 20,
     },
     text_error:{
         textAlign: 'center',

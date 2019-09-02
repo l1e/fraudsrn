@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 
 
 
@@ -9,33 +9,35 @@ class WelcomeScreen extends Component {
     };
     render(){
         return (
-            <View style={styles.body}>
-                <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('AddFrouder')}
-                    style={styles.button}
-                >
-                    <Text style={styles.textButton}>Добавить мошенника</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Search')}
-                    style={styles.button}
-                >
-                    <Text  style={styles.textButton}>Поиск мошенника</Text>
-                </TouchableOpacity>
+            <SafeAreaView style={styles.body}>
+                <View style={styles.body}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('AddFrouder')}
+                        style={styles.button}
+                    >
+                        <Text style={styles.textButton}>Добавить мошенника</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('Search')}
+                        style={styles.button}
+                    >
+                        <Text  style={styles.textButton}>Поиск мошенника</Text>
+                    </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={() =>this.props.navigation.navigate('ListFrouder')}
-                    style={styles.button}
-                >
-                    <Text  style={styles.textButton}>Список мошенников</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() =>this.props.navigation.navigate('AboutApp')}
-                    style={styles.aboutus}
-                >
-                    <Text  style={styles.textButton}>О приложении</Text>
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity
+                        onPress={() =>this.props.navigation.navigate('ListFrouder')}
+                        style={styles.button}
+                    >
+                        <Text  style={styles.textButton}>Список мошенников</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() =>this.props.navigation.navigate('AboutApp')}
+                        style={styles.aboutus}
+                    >
+                        <Text  style={styles.textButton}>О приложении</Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
         );
     }
 }

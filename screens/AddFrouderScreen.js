@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View,StyleSheet, TextInput, Button, ScrollView, Alert} from 'react-native';
+import {Text, View,StyleSheet, TextInput, Button, ScrollView,SafeAreaView , Alert} from 'react-native';
 
 import {db} from '../firebase/config';
 
@@ -99,68 +99,70 @@ class AddFrouderScreen extends Component {
 
     render(){
         return (
-            <ScrollView style={styles.body}>
-            <View style={styles.container}>
-                <View style={styles.form_titles}>
-                    <Text style={styles.title}>Добавте подробную информацию о мошеннике.</Text>
-                </View>
-                <TextInput style={styles.input}
-                           onChangeText={this.hadlerChangeName}
-                           placeholder='Имя'
-                           placeholderTextColor={placeHolderColor}
-                           value={this.state.froudName}
-                           maxLength={10}
-                />
-                <TextInput style={styles.input}
-                           onChangeText={this.hadlerChangeNameLast}
-                           placeholder='Фамилия'
-                           placeholderTextColor={placeHolderColor}
-                           value={this.state.froudNameLast}
-                           maxLength={20}
-                />
-                <TextInput style={styles.input}
-                           onChangeText={this.hadlerChangeNumber}
-                           placeholder='Номер телефона'
-                           placeholderTextColor={placeHolderColor}
-                           value={this.state.froudNumber}
-                           maxLength={15}
-                           keyboardType={'number-pad'}
-                />
-                <TextInput style={styles.input}
-                           onChangeText={this.hadlerCreditCardNumber}
-                           placeholder='Номер карты мошенника'
-                           placeholderTextColor={placeHolderColor}
-                           value={this.state.froudCreditCard}
-                           maxLength={25}
-                           keyboardType={'numeric'}
-                />
-                <TextInput style={styles.inputShortDescription}
-                           onChangeText={this.hadlerShortDescription}
-                           placeholder='Краткое описание '
-                           placeholderTextColor={placeHolderColor}
-                           value={this.state.froudShortDescription}
-                           numberOfLines={4}
-                           maxLength={90}
-                           multiline={true}
-                />
-                <TextInput style={styles.inputDescription}
-                           onChangeText={this.hadlerDescription}
-                           placeholder='Описание '
-                           placeholderTextColor={placeHolderColor}
-                           value={this.state.froudDescription}
-                           numberOfLines={4}
-                           maxLength={190}
-                           multiline={true}
-                />
-                <View style={styles.button}>
-                    <Button
-                        onPress={this.submitInformation}
-                        title="Отправить информацию"
-                        color="#5499C7"
+            <SafeAreaView style={styles.body}>
+                <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.form_titles}>
+                        <Text style={styles.title}>Добавте подробную информацию о мошеннике.</Text>
+                    </View>
+                    <TextInput style={styles.input}
+                               onChangeText={this.hadlerChangeName}
+                               placeholder='Имя'
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudName}
+                               maxLength={10}
                     />
+                    <TextInput style={styles.input}
+                               onChangeText={this.hadlerChangeNameLast}
+                               placeholder='Фамилия'
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudNameLast}
+                               maxLength={20}
+                    />
+                    <TextInput style={styles.input}
+                               onChangeText={this.hadlerChangeNumber}
+                               placeholder='Номер телефона'
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudNumber}
+                               maxLength={15}
+                               keyboardType={'number-pad'}
+                    />
+                    <TextInput style={styles.input}
+                               onChangeText={this.hadlerCreditCardNumber}
+                               placeholder='Номер карты мошенника'
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudCreditCard}
+                               maxLength={25}
+                               keyboardType={'numeric'}
+                    />
+                    <TextInput style={styles.inputShortDescription}
+                               onChangeText={this.hadlerShortDescription}
+                               placeholder='Краткое описание '
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudShortDescription}
+                               numberOfLines={4}
+                               maxLength={90}
+                               multiline={true}
+                    />
+                    <TextInput style={styles.inputDescription}
+                               onChangeText={this.hadlerDescription}
+                               placeholder='Описание '
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudDescription}
+                               numberOfLines={4}
+                               maxLength={190}
+                               multiline={true}
+                    />
+                    <View style={styles.button}>
+                        <Button
+                            onPress={this.submitInformation}
+                            title="Отправить информацию"
+                            color="#5499C7"
+                        />
+                    </View>
                 </View>
-            </View>
-            </ScrollView>
+                </ScrollView>
+            </SafeAreaView>
         );
     }
 }

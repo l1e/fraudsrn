@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View, ScrollView, Button, StyleSheet,TextInput, Alert} from 'react-native';
+import {Text, View, ScrollView, Button, StyleSheet,TextInput, Alert, SafeAreaView} from 'react-native';
 
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
@@ -37,27 +37,29 @@ class SearchScreen extends Component {
         };
     render(){
         return (
-            <ScrollView style={styles.body}>
-                <View style={styles.content}>
-                    <View style={styles.form_titles}>
-                        <Text style={styles.title}>Введите информацию, которая известна о мошеннике.</Text>
+            <SafeAreaView style={styles.body}>
+                <ScrollView >
+                    <View style={styles.content}>
+                        <View style={styles.form_titles}>
+                            <Text style={styles.title}>Введите информацию, которая известна о мошеннике.</Text>
+                        </View>
+                        <TextInput
+                            style={styles.searchInput}
+                            onChangeText={this.handlerInputSearch}
+                            placeholder='Введите известную информацию о мошеннике'
+                            placeholderTextColor={placeHolderColor}
+                            numberOfLines={20}
+                            value={this.state.searchInfo}
+                            maxLength={20}
+                        />
+                        <Button
+                            onPress={this.submitISearch}
+                            title="Отправить информацию"
+                            color="#5499C7"
+                        />
                     </View>
-                    <TextInput
-                        style={styles.searchInput}
-                        onChangeText={this.handlerInputSearch}
-                        placeholder='Введите известную информацию о мошеннике'
-                        placeholderTextColor={placeHolderColor}
-                        numberOfLines={20}
-                        value={this.state.searchInfo}
-                        maxLength={20}
-                    />
-                    <Button
-                        onPress={this.submitISearch}
-                        title="Отправить информацию"
-                        color="#5499C7"
-                    />
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </SafeAreaView>
         );
     }
 }
@@ -66,11 +68,13 @@ const styles = StyleSheet.create({
     body:{
         flex: 1,
         backgroundColor: '#e8ebf4',
-        paddingTop: 60
+        paddingTop: 60,
+        paddingBottom: 30
     },
     content:{
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 10,
     },
     form_titles:{
         paddingBottom: 40,
@@ -86,6 +90,7 @@ const styles = StyleSheet.create({
     },
     button:{
         marginTop: 20,
+        marginBottom: 20,
     },
     title:{
         textAlign: 'center',

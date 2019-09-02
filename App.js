@@ -8,21 +8,13 @@
 
 import React, {Fragment, Component} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,Button
+  StatusBar,
+  Button ,
 } from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
 
 import WelcomeScreen from './screens/WelcomeScreen';
