@@ -8,7 +8,7 @@
 
 import React, {Fragment} from 'react';
 import {
-  StyleSheet,
+  StyleSheet
 } from 'react-native';
 
 

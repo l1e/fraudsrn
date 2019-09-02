@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 
-
 class WelcomeScreen extends Component {
     static navigationOptions = {
         header: null,
