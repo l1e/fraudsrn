@@ -1,0 +1,9 @@
+{
+  "hello": "Hello World!! From other file",
+  "change": "Change language",
+  "stepone": " Step one",
+  "main_addFrouder": "Add frouder",
+  "main_searchFrouder": "Search frouder",
+  "main_listFrouder" : "List frouder",
+  "main_aboutApp": "About app"
+}

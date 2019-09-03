@@ -1,0 +1,9 @@
+{
+  "hello": "Hello World!! From other file",
+  "change": "Change language",
+  "stepone": " Step one",
+  "main_addFrouder": "Добавить мошенника",
+  "main_searchFrouder": "Поиск мошенника",
+  "main_listFrouder" : "Список мошенников",
+  "main_aboutApp": "О приложении"
+}
