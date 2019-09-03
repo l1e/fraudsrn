@@ -4,12 +4,17 @@ import {Text, View, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
 import Itemfroud from '../component/Itemfroud';
 
 import {db} from '../firebase/config';
+import Localization from "../component/Localization";
 let itemsRef = db.ref('/items');
 
 
 class ListFroudScreen extends Component {
-    static navigationOptions = {
-        title: 'Список мошенников',
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const { params } = navigation.state;
+
+        return {
+            title: Localization().listfrouder_title,
+        };
     };
     constructor(props) {
         super(props);

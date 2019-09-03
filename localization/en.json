@@ -1,9 +1,20 @@
 {
-  "hello": "Hello World!! From other file",
-  "change": "Change language",
-  "stepone": " Step one",
+  "sendinfo": "Send information",
   "main_addFrouder": "Add frouder",
   "main_searchFrouder": "Search frouder",
   "main_listFrouder" : "List frouder",
-  "main_aboutApp": "About app"
+  "main_aboutApp": "About app",
+  "addfrouder_desc":"Add detailed scam information.",
+  "addfrouder_title":"Add frouder",
+  "addfrouder_name": "Name",
+  "addfrouder_lastname": "Last name",
+  "addfrouder_number": "Phone number",
+  "addfrouder_card": "Card number",
+  "addfrouder_shortdesc": "Short description",
+  "addfrouder_description": "Description",
+  "search_title": "Search frouder",
+  "search_desc": "Enter the information that is known about the scammer.",
+  "search_placeholder": "Enter known scam information",
+  "listfrouder_title": "List frouder",
+  "aboutapp_title": "About app"
 }

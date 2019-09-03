@@ -1,9 +1,20 @@
 {
-  "hello": "Hello World!! From other file",
-  "change": "Change language",
-  "stepone": " Step one",
+  "sendinfo": "Отправить информацию",
   "main_addFrouder": "Добавить мошенника",
   "main_searchFrouder": "Поиск мошенника",
   "main_listFrouder" : "Список мошенников",
-  "main_aboutApp": "О приложении"
+  "main_aboutApp": "О приложении",
+  "addfrouder_desc":"Добавьте подробную информацию о мошеннике.",
+  "addfrouder_title":"Добавить мошенника",
+  "addfrouder_name": "Имя",
+  "addfrouder_lastname": "Фамилия",
+  "addfrouder_number": "Номер телефона",
+  "addfrouder_card": "Номер карты мошенника",
+  "addfrouder_shortdesc": "Краткое описание",
+  "addfrouder_description": "Описание",
+  "search_title":"Поиск мошенника",
+  "search_desc": "Введите информацию, которая известна о мошеннике.",
+  "search_placeholder": "Введите известную информацию о мошеннике",
+  "listfrouder_title": "Список мошенников",
+  "aboutapp_title": "О приложении"
 }

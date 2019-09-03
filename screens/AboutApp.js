@@ -1,11 +1,17 @@
 import React,{Component} from 'react';
 import {Text, View, ScrollView, Button, StyleSheet,TextInput, Alert} from 'react-native';
+import Localization from "../component/Localization";
 
 class AboutApp extends Component {
 
-    static navigationOptions = {
-        title: 'О приложении',
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const { params } = navigation.state;
+
+        return {
+            title: Localization().aboutapp_title ,
+        };
     };
+
     render(){
         return (
                 <View style={styles.content}>

@@ -1,19 +1,25 @@
 import React,{Component} from 'react';
 import {Text, View, ScrollView, Button, StyleSheet,TextInput, Alert, SafeAreaView} from 'react-native';
+import Localization from "../component/Localization";
 
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
 
 class SearchScreen extends Component {
 
-    static navigationOptions = {
-        title: 'Поиск мошенника',
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const { params } = navigation.state;
+
+        return {
+            title: Localization().search_title ,
+        };
     };
 
     constructor(props) {
         super(props);
         this.state = {
             searchInfo: '',
+            lang: Localization(),
         }
     };
 
@@ -41,12 +47,12 @@ class SearchScreen extends Component {
                 <ScrollView >
                     <View style={styles.content}>
                         <View style={styles.form_titles}>
-                            <Text style={styles.title}>Введите информацию, которая известна о мошеннике.</Text>
+                            <Text style={styles.title}>{this.state.lang.search_desc}</Text>
                         </View>
                         <TextInput
                             style={styles.searchInput}
                             onChangeText={this.handlerInputSearch}
-                            placeholder='Введите известную информацию о мошеннике'
+                            placeholder={this.state.lang.search_placeholder}
                             placeholderTextColor={placeHolderColor}
                             numberOfLines={20}
                             value={this.state.searchInfo}
@@ -54,7 +60,7 @@ class SearchScreen extends Component {
                         />
                         <Button
                             onPress={this.submitISearch}
-                            title="Отправить информацию"
+                            title={this.state.lang.sendinfo}
                             color="#5499C7"
                         />
                     </View>
