@@ -12,9 +12,15 @@
   "addfrouder_card": "Card number",
   "addfrouder_shortdesc": "Short description",
   "addfrouder_description": "Description",
+  "filtredList_title": "Found scammers",
+  "filtredList_nothintofound": "Nothin to found",
+  "filtredList_tryagain": "Enter the data again",
   "search_title": "Search frouder",
+  "search_error": "Error",
+  "search_error_desc": "Enter your search information",
   "search_desc": "Enter the information that is known about the scammer.",
   "search_placeholder": "Enter known scam information",
   "listfrouder_title": "List frouder",
+  "listfrouder_error": "Nothin to found",
   "aboutapp_title": "About app"
 }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView} from 'react-native'
+import {View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, ActivityIndicator} from 'react-native'
+
+import Localization from "../component/Localization";
 
 import Itemfroud from '../component/Itemfroud';
 
@@ -9,14 +11,19 @@ let itemsRef = db.ref('/items');
 
 
 class FiltrFroudListScreen extends Component {
-    static navigationOptions = {
-        title: 'Найдено мошенников',
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const { params } = navigation.state;
+
+        return {
+            title: Localization().listfrouder_title,
+        };
     };
     constructor(props) {
         super(props);
         this.state = {
             filtredData :[],
-            itemsStatus:'Ничего не найденно.',
+            lang: Localization(),
+            itemsStatus: '',
         };
     };
     //Filter Data by keywords.
@@ -32,6 +39,7 @@ class FiltrFroudListScreen extends Component {
         return filtredData;
     };
     componentDidMount() {
+        this.noContent();
         //Get key words from search form.
         const { navigation } = this.props;
         const keyword = navigation.getParam('keyword', 'Keyword');
@@ -45,23 +53,33 @@ class FiltrFroudListScreen extends Component {
             this.setState({filtredData: dataToRender});
         });
     }
+    noContent =() =>{
+        setTimeout(()=>{this.setState({itemsStatus: this.state.lang.filtredList_nothintofound})},4000)
+    };
+    searchAgain =()=>{
+        return(
+        <TouchableOpacity
+            onPress={() => this.props.navigation.goBack()}
+            style={styles.button}
+        >
+            <Text  style={styles.textButton}>{this.state.lang.filtredList_tryagain}</Text>
+        </TouchableOpacity>
+        )
+    };
 
     render(){
         return(
             <SafeAreaView style={styles.body}>
-                <ScrollView>
-                    <View style={styles.content}>
+                <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                    <View style={styles.content} style={[(this.state.filtredData.length) > 0  ? styles.content : styles.contentExist]}>
                         {this.state.filtredData.length > 0 ? (
                             <Itemfroud items={this.state.filtredData} />
                         ) : (
-                            <View>
-                                <Text style={styles.text_error}>{this.state.itemsStatus}</Text>
-                                <TouchableOpacity
-                                    onPress={() => this.props.navigation.goBack()}
-                                    style={styles.button}
-                                >
-                                    <Text  style={styles.textButton}>Ввести данные еще раз.</Text>
-                                </TouchableOpacity>
+                            <View style={styles.loadingInner}>
+                                {this.state.itemsStatus.length > 2 ?<Text style={styles.text_error}>{this.state.itemsStatus}</Text>  :<ActivityIndicator size="large" color="#0000ff" />}
+                                {this.state.itemsStatus.length > 2 ? this.searchAgain(): console.log(' ??? ')  }
+
+                                {/*<Text style={styles.text_error}>{this.state.itemsStatus}</Text>*/}
                             </View>
                             )}
                     </View>
@@ -77,7 +95,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#e8ebf4',
     },
     content:{
-        paddingTop: 20,
+        paddingTop: 10,
+        paddingBottom: 20,
+    },
+    contentExist:{
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        paddingTop: 10,
         paddingBottom: 20,
     },
     text_error:{
@@ -94,6 +119,12 @@ const styles = StyleSheet.create({
     },
     textButton:{
       textAlign: 'center',
+    },
+    loadingInner:{
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
     },
 });
 export default FiltrFroudListScreen;

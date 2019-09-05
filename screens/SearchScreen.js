@@ -38,9 +38,9 @@ class SearchScreen extends Component {
                 keyword: this.state.searchInfo});
                 this.clearInput();
         }else{
-            Alert.alert("Ошибка","Введите информацию для поиска");
+            Alert.alert(this.state.lang.search_error,this.state.lang.search_error_desc);
         }
-        };
+    };
     render(){
         return (
             <SafeAreaView style={styles.body}>

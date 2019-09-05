@@ -12,9 +12,15 @@
   "addfrouder_card": "Номер карты мошенника",
   "addfrouder_shortdesc": "Краткое описание",
   "addfrouder_description": "Описание",
+  "filtredList_title": "Найдено мошенников",
+  "filtredList_nothintofound": "Ничего не найденно",
+  "filtredList_tryagain": "Ввести данные еще раз.",
   "search_title":"Поиск мошенника",
+  "search_error": "Ошибка",
+  "search_error_desc": "Введите информацию для поиска",
   "search_desc": "Введите информацию, которая известна о мошеннике.",
   "search_placeholder": "Введите известную информацию о мошеннике",
   "listfrouder_title": "Список мошенников",
+  "listfrouder_error": "Ничего не найдено",
   "aboutapp_title": "О приложении"
 }

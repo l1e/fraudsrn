@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator} from 'react-native';
 
 import Itemfroud from '../component/Itemfroud';
 
@@ -13,17 +13,19 @@ class ListFroudScreen extends Component {
         const { params } = navigation.state;
 
         return {
-            title: Localization().listfrouder_title,
+            title: Localization().filtredList_title,
         };
     };
     constructor(props) {
         super(props);
         this.state = {
             items: [],
-            itemsStatus: 'Ничего не найденно.'
+            itemsStatus: '',
+            lang: Localization(),
         }
     };
     componentDidMount() {
+        this.noContent();
         itemsRef.on('value', snapshot => {
             let data = snapshot.val();
             let items = Object.values(data);
@@ -31,15 +33,20 @@ class ListFroudScreen extends Component {
         });
 
     };
+    noContent =() =>{
+        setTimeout(()=>{this.setState({itemsStatus: this.state.lang.listfrouder_error})},10000)
+    };
     render(){
         return (
             <SafeAreaView style={styles.body}>
-                <ScrollView >
+                <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content}>
                         {this.state.items.length > 0 ? (
                             <Itemfroud items={this.state.items} />
                         ) : (
-                            <Text>{this.state.itemsStatus}</Text>
+                            <View style={styles.loadingInner}>
+                                {this.state.itemsStatus.length > 2 ? <Text>{this.state.itemsStatus}</Text>: <ActivityIndicator size="large" color="#0000ff" />}
+                            </View>
                         )}
                     </View>
                 </ScrollView>
@@ -56,8 +63,21 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
     },
     content:{
+        flex: 1,
+        width: '100%',
+        height: '100%',
         paddingTop: 10,
         paddingBottom: 20,
+    },
+    loadingInner:{
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    fill:{
+        flex: 1,
     }
 });
 
