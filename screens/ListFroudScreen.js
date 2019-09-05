@@ -34,7 +34,7 @@ class ListFroudScreen extends Component {
 
     };
     noContent =() =>{
-        setTimeout(()=>{this.setState({itemsStatus: this.state.lang.listfrouder_error})},10000)
+        setTimeout(()=>{this.setState({itemsStatus: this.state.lang.listfrouder_error})},14000)
     };
     render(){
         return (

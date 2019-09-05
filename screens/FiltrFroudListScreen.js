@@ -54,7 +54,7 @@ class FiltrFroudListScreen extends Component {
         });
     }
     noContent =() =>{
-        setTimeout(()=>{this.setState({itemsStatus: this.state.lang.filtredList_nothintofound})},4000)
+        setTimeout(()=>{this.setState({itemsStatus: this.state.lang.filtredList_nothintofound})},14000)
     };
     searchAgain =()=>{
         return(
