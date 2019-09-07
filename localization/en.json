@@ -21,6 +21,7 @@
   "search_desc": "Enter the information that is known about the scammer.",
   "search_placeholder": "Enter known scam information",
   "search_button": "Search",
+  "singleitem_title": "Description of the scammer",
   "listfrouder_title": "List frouder",
   "listfrouder_error": "Nothin to found",
   "aboutapp_title": "About app"

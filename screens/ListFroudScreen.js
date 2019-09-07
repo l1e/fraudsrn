@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator, AsyncStorage} from 'react-native';
 
 import Itemfroud from '../component/Itemfroud';
 
@@ -31,6 +31,7 @@ class ListFroudScreen extends Component {
             let items = Object.values(data);
             this.setState({ items });
         });
+        AsyncStorage.setItem('Name', 'Andrey');
 
     };
     noContent =() =>{
@@ -42,7 +43,7 @@ class ListFroudScreen extends Component {
                 <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content}>
                         {this.state.items.length > 0 ? (
-                            <Itemfroud items={this.state.items} maxSymbol={140}/>
+                            <Itemfroud items={this.state.items} maxSymbol={140} />
                         ) : (
                             <View style={styles.loadingInner}>
                                 {this.state.itemsStatus.length > 2 ? <Text>{this.state.itemsStatus}</Text>: <ActivityIndicator size="large" color="#0000ff" />}

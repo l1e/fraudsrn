@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet , Alert, TouchableOpacity} from 'react-native';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 
-export default class itemfroud extends Component {
+class Itemfroud extends Component {
     static propTypes = {
         items: PropTypes.array.isRequired,
         maxSymbol: PropTypes.number.isRequired
@@ -20,22 +21,31 @@ export default class itemfroud extends Component {
     };
     render() {
         return (
-            <View style={styles.itemsList}>
-                {this.props.items.map((item, index) => {
-                    return (
-                        <TouchableOpacity key={index} style={styles.frouder} >
-                            <Text style={styles.frouder__text}>{item.shortdesc}</Text>
-                            <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{this.cutLong(item.desc, this.props.maxSymbol)}</Text>
-                            <View style={styles.frouder__additionalInformation}>
-                                <Text style={styles.frouder__phone}>{item.phone}</Text>
-                                <Text style={styles.frouder__personalInfo} >{item.firstname+'\b'}{item.lastname} </Text>
-                            </View>
 
-                        </TouchableOpacity>
+                <View style={styles.itemsList}>
+                    {this.props.items.map((item, index) => {
+                        return (
+                            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('SingleItem',{
+                                shortDesc:item.shortdesc,
+                                description:item.desc,
+                                phone:item.phone,
+                                firstName:item.firstname,
+                                lastName:item.lastname,
+                                card:item.card,
+                            })}}>
+                                <View key={index} style={styles.frouder} >
+                                    <Text style={styles.frouder__text}>{item.shortdesc}</Text>
+                                    <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{this.cutLong(item.desc, this.props.maxSymbol)}</Text>
+                                    <View style={styles.frouder__additionalInformation}>
+                                        <Text style={styles.frouder__phone}>{item.phone}</Text>
+                                        <Text style={styles.frouder__personalInfo} >{item.firstname+'\b'}{item.lastname} </Text>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        );
+                    })}
+                </View>
 
-                    );
-                })}
-            </View>
         );
     }
 }
@@ -80,3 +90,6 @@ const styles = StyleSheet.create({
         paddingTop: 5,
     },
 });
+
+
+export default withNavigation(Itemfroud);

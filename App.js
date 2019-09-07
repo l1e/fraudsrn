@@ -19,6 +19,7 @@ import ListFroudScreen from './screens/ListFroudScreen';
 import FiltrFroudListScreen from './screens/FiltrFroudListScreen';
 import AboutApp from './screens/AboutApp';
 import  {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
+import SingleItem from "./screens/SingleItem";
 
 
 const AppSwitchNavigator = createSwitchNavigator({
@@ -42,6 +43,7 @@ const appStackNavigator = createStackNavigator({
   ListFrouder: {screen: ListFroudScreen},
   FiltrFroud: {screen:FiltrFroudListScreen},
   AboutApp: {screen:AboutApp},
+  SingleItem:{screen: SingleItem}
 });
 
 
