@@ -24,11 +24,11 @@ class SingleItem extends Component {
                 <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content}>
                         <View style={styles.persDetails}>
+
                             {firstName ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Имя: </Text>
                                 <Text style={styles.persDetails__text} >{firstName}</Text>
-
                             </Text>
                             ):(
                                 null
@@ -42,6 +42,7 @@ class SingleItem extends Component {
                             ):(
                                 null
                             )}
+
                             {phone ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Номер телефона: </Text>
@@ -69,6 +70,7 @@ class SingleItem extends Component {
                             ):(
                                 null
                             )}
+
                         </View>
                         <Text style={styles.title}>{shortDesc}</Text>
                         <Text>{description}</Text>
