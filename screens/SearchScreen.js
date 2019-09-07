@@ -60,7 +60,7 @@ class SearchScreen extends Component {
                         />
                         <Button
                             onPress={this.submitISearch}
-                            title={this.state.lang.sendinfo}
+                            title={this.state.lang.search_button}
                             color="#5499C7"
                         />
                     </View>

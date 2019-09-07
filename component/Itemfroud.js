@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class itemfroud extends Component {
     static propTypes = {
-        items: PropTypes.array.isRequired
+        items: PropTypes.array.isRequired,
+        maxSymbol: PropTypes.number.isRequired
+    };
+    cutLong=(item,characterMax)=>{
+        let cutItem = null ;
+        let addToEnd = '...';
+        if (item.length > characterMax){
+            cutItem = item.slice(0, characterMax);
+            cutItem = cutItem.concat(addToEnd);
+        }else{
+            cutItem= item;
+        }
+        return cutItem;
     };
     render() {
         return (
             <View style={styles.itemsList}>
                 {this.props.items.map((item, index) => {
                     return (
-                        <View key={index} style={styles.frouder} >
+                        <TouchableOpacity key={index} style={styles.frouder} >
                             <Text style={styles.frouder__text}>{item.shortdesc}</Text>
-                            <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{item.desc}</Text>
+                            <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{this.cutLong(item.desc, this.props.maxSymbol)}</Text>
                             <View style={styles.frouder__additionalInformation}>
                                 <Text style={styles.frouder__phone}>{item.phone}</Text>
                                 <Text style={styles.frouder__personalInfo} >{item.firstname+'\b'}{item.lastname} </Text>
                             </View>
-                        </View>
+
+                        </TouchableOpacity>
+
                     );
                 })}
             </View>

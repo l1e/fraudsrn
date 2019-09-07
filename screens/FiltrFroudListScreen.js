@@ -73,7 +73,7 @@ class FiltrFroudListScreen extends Component {
                 <ScrollView contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content} style={[(this.state.filtredData.length) > 0  ? styles.content : styles.contentExist]}>
                         {this.state.filtredData.length > 0 ? (
-                            <Itemfroud items={this.state.filtredData} />
+                            <Itemfroud items={this.state.filtredData} maxSymbol={140}/>
                         ) : (
                             <View style={styles.loadingInner}>
                                 {this.state.itemsStatus.length > 2 ?<Text style={styles.text_error}>{this.state.itemsStatus}</Text>  :<ActivityIndicator size="large" color="#0000ff" />}

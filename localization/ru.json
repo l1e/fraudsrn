@@ -20,6 +20,7 @@
   "search_error_desc": "Введите информацию для поиска",
   "search_desc": "Введите информацию, которая известна о мошеннике.",
   "search_placeholder": "Введите известную информацию о мошеннике",
+  "search_button": "Поиск",
   "listfrouder_title": "Список мошенников",
   "listfrouder_error": "Ничего не найдено",
   "aboutapp_title": "О приложении"

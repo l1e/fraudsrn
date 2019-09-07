@@ -161,7 +161,7 @@ class AddFrouderScreen extends Component {
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudDescription}
                                numberOfLines={4}
-                               maxLength={190}
+                               maxLength={8000}
                                multiline={true}
                     />
                     <View style={styles.button}>

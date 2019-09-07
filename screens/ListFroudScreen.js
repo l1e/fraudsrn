@@ -42,7 +42,7 @@ class ListFroudScreen extends Component {
                 <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content}>
                         {this.state.items.length > 0 ? (
-                            <Itemfroud items={this.state.items} />
+                            <Itemfroud items={this.state.items} maxSymbol={140}/>
                         ) : (
                             <View style={styles.loadingInner}>
                                 {this.state.itemsStatus.length > 2 ? <Text>{this.state.itemsStatus}</Text>: <ActivityIndicator size="large" color="#0000ff" />}
