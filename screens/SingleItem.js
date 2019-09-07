@@ -24,26 +24,51 @@ class SingleItem extends Component {
                 <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content}>
                         <View style={styles.persDetails}>
+                            {firstName ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Имя: </Text>
-                                <Text style={styles.persDetails__text}>{firstName}</Text>
+                                <Text style={styles.persDetails__text} >{firstName}</Text>
+
                             </Text>
+                            ):(
+                                null
+                            )}
+
+                            {lastName ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Фамилия: </Text>
                                 <Text style={styles.persDetails__text}>{lastName}</Text>
                             </Text>
+                            ):(
+                                null
+                            )}
+                            {phone ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Номер телефона: </Text>
                                 <Text style={styles.persDetails__text}>{phone}</Text>
                             </Text>
+
+                            ):(
+                                null
+                            )}
+
+                            {card ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Номер карты: </Text>
                                 <Text style={styles.persDetails__text}>{card}</Text>
                             </Text>
+                            ):(
+                                null
+                            )}
+
+                            {url ?(
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Ссылка на мошенника: </Text>
                                 <Text style={styles.persDetails__text}>{url}</Text>
                             </Text>
+                            ):(
+                                null
+                            )}
                         </View>
                         <Text style={styles.title}>{shortDesc}</Text>
                         <Text>{description}</Text>

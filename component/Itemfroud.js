@@ -35,7 +35,7 @@ class Itemfroud extends Component {
                                 url:item.url,
                             })}}>
                                 <View key={index} style={styles.frouder} >
-                                    <Text style={styles.frouder__text}>{item.shortdesc}</Text>
+                                    <Text style={styles.frouder__text}> {item.shortdesc}</Text>
                                     <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{this.cutLong(item.desc, this.props.maxSymbol)}</Text>
                                     <View style={styles.frouder__additionalInformation}>
                                         <Text style={styles.frouder__phone}>{item.phone}</Text>
