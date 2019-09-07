@@ -22,13 +22,23 @@ class SingleItem extends Component {
             <SafeAreaView style={styles.body}>
                 <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
                     <View style={styles.content}>
-                        <View style={styles.names}>
-                            <Text style={styles.part}>{firstName}</Text>
-                            <Text style={styles.part}>{lastName}</Text>
-                        </View>
-                        <View style={styles.contacts}>
-                            <Text style={styles.part}>{phone}</Text>
-                            <Text style={styles.part}>{card}</Text>
+                        <View style={styles.persDetails}>
+                            <Text style={styles.persDetails__item}>
+                                <Text style={styles.persDetails__label}>Имя: </Text>
+                                <Text style={styles.persDetails__text}>{firstName}</Text>
+                            </Text>
+                            <Text style={styles.persDetails__item}>
+                                <Text style={styles.persDetails__label}>Фамилия: </Text>
+                                <Text style={styles.persDetails__text}>{lastName}</Text>
+                            </Text>
+                            <Text style={styles.persDetails__item}>
+                                <Text style={styles.persDetails__label}>Номер телефона: </Text>
+                                <Text style={styles.persDetails__text}>{phone}</Text>
+                            </Text>
+                            <Text style={styles.persDetails__item}>
+                                <Text style={styles.persDetails__label}>Номер карты: </Text>
+                                <Text style={styles.persDetails__text}>{card}</Text>
+                            </Text>
                         </View>
                         <Text style={styles.title}>{shortDesc}</Text>
                         <Text>{description}</Text>
@@ -54,26 +64,28 @@ const  styles= StyleSheet.create({
         paddingBottom: 20,
         paddingLeft: 10,
         paddingRight: 10,
+
     },
-    names:{
+    persDetails:{
         width: "100%",
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: "space-around"
+        flexDirection: "column",
+        alignItems: 'flex-start',
+        justifyContent: "flex-start",
+        marginBottom: 20,
     },
-    contacts:{
-        width: "100%",
-        flexDirection: "row",
-        alignItems: 'center',
-        justifyContent: "space-around"
+    persDetails__item:{
+        paddingBottom: 10,
     },
-    part:{
-        width: '50%'
+    persDetails__label:{
+        color: '#272727'
+    },
+    persDetails__text:{
+
     },
     title:{
-        marginTop: 10,
-        marginBottom: 10
-    },
+        marginBottom: 10,
+        fontWeight: 'bold'
+    }
 });
 
 export default SingleItem;
