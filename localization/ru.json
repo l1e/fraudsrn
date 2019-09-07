@@ -9,6 +9,7 @@
   "addfrouder_name": "Имя",
   "addfrouder_lastname": "Фамилия",
   "addfrouder_number": "Номер телефона",
+  "addfrouder_url": "ССылка на страницу мошенника",
   "addfrouder_card": "Номер карты мошенника",
   "addfrouder_shortdesc": "Краткое описание",
   "addfrouder_description": "Описание",

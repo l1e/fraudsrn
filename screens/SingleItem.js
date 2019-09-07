@@ -18,6 +18,7 @@ class SingleItem extends Component {
         const firstName = navigation.getParam('firstName','some value');
         const lastName = navigation.getParam('lastName','some value');
         const card = navigation.getParam('card','some value');
+        const url = navigation.getParam('url','some value');
         return(
             <SafeAreaView style={styles.body}>
                 <ScrollView style={styles.fill} contentContainerStyle={{flexGrow: 1}}>
@@ -38,6 +39,10 @@ class SingleItem extends Component {
                             <Text style={styles.persDetails__item}>
                                 <Text style={styles.persDetails__label}>Номер карты: </Text>
                                 <Text style={styles.persDetails__text}>{card}</Text>
+                            </Text>
+                            <Text style={styles.persDetails__item}>
+                                <Text style={styles.persDetails__label}>Ссылка на мошенника: </Text>
+                                <Text style={styles.persDetails__text}>{url}</Text>
                             </Text>
                         </View>
                         <Text style={styles.title}>{shortDesc}</Text>

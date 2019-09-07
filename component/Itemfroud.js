@@ -32,6 +32,7 @@ class Itemfroud extends Component {
                                 firstName:item.firstname,
                                 lastName:item.lastname,
                                 card:item.card,
+                                url:item.url,
                             })}}>
                                 <View key={index} style={styles.frouder} >
                                     <Text style={styles.frouder__text}>{item.shortdesc}</Text>

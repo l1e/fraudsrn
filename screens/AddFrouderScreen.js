@@ -10,6 +10,7 @@ let addItem = item => {
         firstname: item.name,
         lastname: item.lastname ,
         phone: item.phone ,
+        url: item.url ,
         card: item.card ,
         shortdesc: item.shortdesc,
         desc: item.desc ,
@@ -40,6 +41,7 @@ class AddFrouderScreen extends Component {
             froudName: '',
             froudNameLast: '',
             froudNumber: '',
+            froudUrl: '',
             froudCreditCard: '',
             froudShortDescription: '',
             froudDescription: '',
@@ -53,6 +55,7 @@ class AddFrouderScreen extends Component {
             froudName: '',
             froudNameLast: '',
             froudNumber: '',
+            froudUrl:'',
             froudCreditCard: '',
             froudShortDescription: '',
             froudDescription: ''
@@ -71,6 +74,11 @@ class AddFrouderScreen extends Component {
     hadlerChangeNumber = (val)=>{
         this.setState({
             froudNumber: val
+        });
+    };
+    hadlerChangeUrl = (val)=>{
+        this.setState({
+            froudUrl: val
         });
     };
     hadlerCreditCardNumber = (val)=>{
@@ -96,6 +104,7 @@ class AddFrouderScreen extends Component {
                 'name': this.state.froudName,
                 'lastname': this.state.froudNameLast,
                 'phone': this.state.froudNumber,
+                'url': this.state.froudUrl,
                 'card': this.state.froudCreditCard,
                 'shortdesc': this.state.froudShortDescription,
                 'desc': this.state.froudDescription});
@@ -135,8 +144,15 @@ class AddFrouderScreen extends Component {
                                placeholder={this.state.lang.addfrouder_number}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudNumber}
-                               maxLength={15}
+                               maxLength={20}
                                keyboardType={'number-pad'}
+                    />
+                    <TextInput style={styles.input}
+                               onChangeText={this.hadlerChangeUrl}
+                               placeholder={this.state.lang.addfrouder_url}
+                               placeholderTextColor={placeHolderColor}
+                               value={this.state.froudUrl}
+                               maxLength={40}
                     />
                     <TextInput style={styles.input}
                                onChangeText={this.hadlerCreditCardNumber}
@@ -180,8 +196,8 @@ class AddFrouderScreen extends Component {
 const styles = StyleSheet.create({
     body:{
         flex: 1,
-        paddingTop: 70,
-        paddingBottom: 40,
+        paddingTop: 40,
+        paddingBottom: 30,
         backgroundColor: '#e8ebf4',
     },
     container: {
@@ -204,7 +220,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
     },
     form_titles:{
-        paddingBottom: 30,
+        paddingBottom: 25,
     },
     button:{
         paddingTop: 20,
