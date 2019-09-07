@@ -22,7 +22,6 @@ let addItem = item => {
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
 
-
 // Set color constants END
 
 class AddFrouderScreen extends Component {
@@ -46,6 +45,8 @@ class AddFrouderScreen extends Component {
             froudShortDescription: '',
             froudDescription: '',
             lang: Localization(),
+            error: '',
+            errorShortDesc:'',
         };
         titleScreen = 'Fuck '
     };
@@ -88,15 +89,34 @@ class AddFrouderScreen extends Component {
     };
 
     hadlerShortDescription = (val)=>{
+        if (this.state.froudShortDescription.length > 10){
         this.setState({
             froudShortDescription: val
         });
+            this.setState({errorShortDesc: ''});
+        }else {
+            this.setState({
+                froudShortDescription: val
+            });
+
+            this.setState({errorShortDesc: 'You wrote too short short description. Minimum 10 characters.'});
+        }
     };
 
     hadlerDescription = (val)=>{
-        this.setState({
-            froudDescription: val
-        });
+        console.log("lenght is: "+val.length);
+        if (this.state.froudDescription.length > 50){
+            this.setState({
+                froudDescription: val
+            });
+            this.setState({errorDesc: ''});
+        }else {
+            this.setState({
+                froudDescription: val
+            });
+
+            this.setState({errorDesc: 'You wrote too short description. Minimum 50 characters.'});
+        }
     };
     submitInformation = () => {
         if (this.state.froudShortDescription != '' && this.state.froudDescription != '') {
@@ -125,7 +145,10 @@ class AddFrouderScreen extends Component {
                     <View style={styles.form_titles}>
                         <Text style={styles.title}>{this.state.lang.addfrouder_desc}</Text>
                     </View>
-                    <TextInput style={styles.input}
+                    <Text style={styles.error}>{this.state.errorShortDesc} </Text>
+                    <Text style={styles.error}>{this.state.errorDesc} </Text>
+
+                    <TextInput style={styles.inputName}
                                onChangeText={this.hadlerChangeName}
                                placeholder={this.state.lang.addfrouder_name}
                                placeholderTextColor={placeHolderColor}
@@ -219,6 +242,13 @@ const styles = StyleSheet.create({
         color:  inputText,
         textAlign: 'left',
     },
+    inputName:{
+        width: '70%',
+        borderBottomColor: '#909497',
+        borderBottomWidth: 2,
+        color:  inputText,
+        textAlign: 'left',
+    },
     form_titles:{
         paddingBottom: 25,
     },
@@ -239,6 +269,9 @@ const styles = StyleSheet.create({
         borderBottomColor: '#909497',
         borderBottomWidth: 2,
         color:  inputText,
+    },
+    error:{
+      color:'#993322'
     },
 
 });
