@@ -21,7 +21,7 @@ let addItem = item => {
 // Set color constants START
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
-
+let statusError = 0 ;
 // Set color constants END
 
 class AddFrouderScreen extends Component {
@@ -45,7 +45,15 @@ class AddFrouderScreen extends Component {
             froudShortDescription: '',
             froudDescription: '',
             lang: Localization(),
-            error: '',
+            error: [
+                {name:''},
+                {lastName:''},
+                {phone:''},
+                {url:''},
+                {cardNumber:''},
+                {shortDesc:' shDec'},
+                {desc:'desc'},
+            ],
             errorShortDesc:'',
         };
         titleScreen = 'Fuck '
@@ -66,60 +74,90 @@ class AddFrouderScreen extends Component {
         this.setState({
             froudName: val
         });
+        this.validateForm(val, 'name');
+
     };
     hadlerChangeNameLast = (val)=>{
         this.setState({
             froudNameLast: val
         });
+        this.validateForm(val, 'lastName');
     };
     hadlerChangeNumber = (val)=>{
         this.setState({
             froudNumber: val
         });
+        this.validateForm(val, 'phone');
     };
     hadlerChangeUrl = (val)=>{
         this.setState({
             froudUrl: val
         });
+        this.validateForm(val, 'url');
     };
     hadlerCreditCardNumber = (val)=>{
         this.setState({
             froudCreditCard: val
         });
+        this.validateForm(val, 'cardNumber');
     };
 
     hadlerShortDescription = (val)=>{
-        if (this.state.froudShortDescription.length > 10){
-        this.setState({
-            froudShortDescription: val
-        });
-            this.setState({errorShortDesc: ''});
-        }else {
             this.setState({
                 froudShortDescription: val
             });
-
-            this.setState({errorShortDesc: 'You wrote too short short description. Minimum 10 characters.'});
-        }
+        this.validateForm(val, 'shDesc');
     };
 
     hadlerDescription = (val)=>{
-        console.log("lenght is: "+val.length);
-        if (this.state.froudDescription.length > 50){
             this.setState({
                 froudDescription: val
             });
-            this.setState({errorDesc: ''});
-        }else {
-            this.setState({
-                froudDescription: val
-            });
-
-            this.setState({errorDesc: 'You wrote too short description. Minimum 50 characters.'});
-        }
+        this.validateForm(val, 'desc');
     };
+
+    lenghtError=()=>{
+        let  checkInpTut = [ this.state.froudName,
+            this.state.froudNameLast,
+            this.state.froudNumber,
+            this.state.froudUrl,
+            this.state.froudCreditCard,
+            this.state.froudShortDescription,
+            this.state.froudDescription];
+        let ketState = ['name','lastName','phone','url','cardNumber','shDesc','desc'];
+        let statusInput = [];
+        for (let i=0 ; checkInpTut.length > i ; i++ ){
+            statusInput.push(this.validateForm(checkInpTut[i],ketState[i]));
+        }
+
+        let checkAllTrue= statusInput.every(function (elem) {
+           return elem === true;
+        });
+        //
+        //
+        // console.log(statusInput);
+        // console.log('status:'+checkAllTrue);
+        // var obj = (Object.values(this.state.error));
+        // console.log(obj);
+        // // let arr =[] ;
+        // // for (prop in this.state.error) {
+        // //     console.log(prop);
+        // //     console.log(prop[0]);
+        // //     arr.push(prop[0].length);
+        // // }
+        // let getLang = obj.map(function(el){
+        //     return el.length;
+        // }) ;
+        // let longData = getLang.reduce(function(el,sum){
+        //     return sum+el;
+        // });
+        // return longData;
+        return checkAllTrue;
+    };
+
     submitInformation = () => {
-        if (this.state.froudShortDescription != '' && this.state.froudDescription != '') {
+        let statusForm = this.lenghtError();
+        if (statusForm=== true) {
             addItem({
                 'name': this.state.froudName,
                 'lastname': this.state.froudNameLast,
@@ -131,9 +169,113 @@ class AddFrouderScreen extends Component {
             Alert.alert('Мошенник добавлен','Мошенник добавлен');
             this.clearInput();
         }else{
-            Alert.alert("Ошибка","Обязательным является поле с кратким описанием и описанием.");
+            Alert.alert("Ошибка","Заполните оязательные поля");
         }
 
+    };
+    validateForm=(item,type)=>{
+        let messages = {
+            changName: 'Your name too short. Minimum 5 characters',
+            changLast: 'Your last name too short. Minimum 5 characters',
+            changNumber: 'Your number too short. Minimum  14 characters',
+            changUrl: 'Your name too short. Minimum 13 characters',
+            changCardNumber: 'Your card number too short. Minimum 25 characters',
+            changShortDesc: 'Your short description too short. Minimum 10 characters',
+            changDesc: 'Your description too short. Minimum 50 characters',
+        };
+        let status = null;
+        let oldStae = this.state.error;
+        // console.log(oldStae);
+
+        switch (type) {
+            case 'name':
+                if (item.length > 5){
+                    status = '';
+                    oldStae.name = status ;
+                }else{
+                    status = messages.changName;
+                    oldStae.name =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+            case 'lastName':
+                if (item.length > 5){
+                    status = '';
+                    oldStae.lastName = status ;
+                }else{
+                    status = messages.changLast;
+                    oldStae.lastName =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+            case 'phone':
+                if (item.length > 14){
+                    status = '';
+                    oldStae.phone = status ;
+                }else{
+                    status = messages.changNumber;
+                    oldStae.phone =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+            case 'url':
+                if (item.length > 13){
+                    status = '';
+                    oldStae.url = status ;
+                }else{
+                    status = messages.changUrl;
+                    oldStae.url =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+            case 'cardNumber':
+                if (item.length > 13){
+                    status = '';
+                    oldStae.cardNumber = status ;
+                }else{
+                    status = messages.changCardNumber;
+                    oldStae.cardNumber =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+            case 'shDesc':
+                if (item.length > 10){
+                    status = '';
+                    oldStae.shortDesc = status ;
+                }else{
+                    status = messages.changShortDesc;
+                    oldStae.shortDesc =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+
+            case 'desc':
+                if (item.length > 50){
+                    status = '';
+                    oldStae.desc = status ;
+                }else{
+                    status = messages.changDesc;
+                    oldStae.desc =status ;
+
+                    this.setState({error: oldStae})
+                }
+                break;
+            default:
+                status = 'Eroor';
+
+        }
+        if (status ===''){
+            return true;
+        }
+        else{
+            return false;
+        }
     };
 
     render(){
@@ -145,8 +287,49 @@ class AddFrouderScreen extends Component {
                     <View style={styles.form_titles}>
                         <Text style={styles.title}>{this.state.lang.addfrouder_desc}</Text>
                     </View>
-                    <Text style={styles.error}>{this.state.errorShortDesc} </Text>
-                    <Text style={styles.error}>{this.state.errorDesc} </Text>
+
+                    {this.state.error.name ?(
+                        <Text style={styles.error}>{this.state.error.name} </Text>
+                    ):(
+                        null
+                    )}
+
+                     {this.state.error.lastName ?(
+                    <Text style={styles.error}>{this.state.error.lastName} </Text>
+                    ):(
+                       null
+                    )}
+
+                    {this.state.error.phone ?(
+                    <Text style={styles.error}>{this.state.error.phone} </Text>
+                    ):(
+                        null
+                    )}
+
+                    {this.state.error.url ?(
+                        <Text style={styles.error}>{this.state.error.url} </Text>
+                    ):(
+                        null
+                    )}
+
+                    {this.state.error.cardNumber ?(
+                        <Text style={styles.error}>{this.state.error.cardNumber} </Text>
+                    ):(
+                        null
+                    )}
+
+                    {this.state.error.shortDesc ?(
+                        <Text style={styles.error}>{this.state.error.shortDesc} </Text>
+                    ):(
+                        null
+                    )}
+
+                    {this.state.error.desc ?(
+                        <Text style={styles.error}>{this.state.error.desc} </Text>
+                    ):(
+                        null
+                    )}
+
 
                     <TextInput style={styles.inputName}
                                onChangeText={this.hadlerChangeName}
