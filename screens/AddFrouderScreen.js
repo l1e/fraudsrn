@@ -116,47 +116,28 @@ class AddFrouderScreen extends Component {
         this.validateForm(val, 'desc');
     };
 
-    lenghtError=()=>{
-        let  checkInpTut = [ this.state.froudName,
+    checkAllFields=()=>{
+        let  checkInpTut = [this.state.froudName,
             this.state.froudNameLast,
             this.state.froudNumber,
             this.state.froudUrl,
             this.state.froudCreditCard,
             this.state.froudShortDescription,
             this.state.froudDescription];
-        let ketState = ['name','lastName','phone','url','cardNumber','shDesc','desc'];
+        let inputKeys = ['name','lastName','phone','url','cardNumber','shDesc','desc'];
         let statusInput = [];
         for (let i=0 ; checkInpTut.length > i ; i++ ){
-            statusInput.push(this.validateForm(checkInpTut[i],ketState[i]));
+            statusInput.push(this.validateForm(checkInpTut[i],inputKeys[i]));
         }
 
-        let checkAllTrue= statusInput.every(function (elem) {
+        let checkIsAllTrue= statusInput.every(function (elem) {
            return elem === true;
         });
-        //
-        //
-        // console.log(statusInput);
-        // console.log('status:'+checkAllTrue);
-        // var obj = (Object.values(this.state.error));
-        // console.log(obj);
-        // // let arr =[] ;
-        // // for (prop in this.state.error) {
-        // //     console.log(prop);
-        // //     console.log(prop[0]);
-        // //     arr.push(prop[0].length);
-        // // }
-        // let getLang = obj.map(function(el){
-        //     return el.length;
-        // }) ;
-        // let longData = getLang.reduce(function(el,sum){
-        //     return sum+el;
-        // });
-        // return longData;
-        return checkAllTrue;
+        return checkIsAllTrue;
     };
 
     submitInformation = () => {
-        let statusForm = this.lenghtError();
+        let statusForm = this.checkAllFields();
         if (statusForm=== true) {
             addItem({
                 'name': this.state.froudName,
