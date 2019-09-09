@@ -55,7 +55,9 @@ class AddFrouderScreen extends Component {
             ],
             errorShortDesc:'',
         };
+
     };
+
 
     clearInput= ()=>{
         this.setState({
@@ -136,6 +138,7 @@ class AddFrouderScreen extends Component {
 
     submitInformation = () => {
         let statusForm = this.checkAllInputFields();
+        const lang = this.state.lang;
         if (statusForm=== true) {
             addItem({
                 'name': this.state.froudName,
@@ -145,22 +148,23 @@ class AddFrouderScreen extends Component {
                 'card': this.state.froudCreditCard,
                 'shortdesc': this.state.froudShortDescription,
                 'desc': this.state.froudDescription});
-            Alert.alert('Мошенник добавлен','Мошенник добавлен');
+            Alert.alert(lang.addfrouder_form_success,lang.addfrouder_form_success_details);
             this.clearInput();
         }else{
-            Alert.alert("Ошибка","Заполните оязательные поля");
+            Alert.alert(lang.addfrouder_form_error,lang.addfrouder_form_error_details);
         }
 
     };
     validateForm=(item,type)=>{
+        const lang = this.state.lang;
         let messages = {
-            changName: 'Your name too short. Minimum 5 characters',
-            changLast: 'Your last name too short. Minimum 5 characters',
-            changNumber: 'Your number too short. Minimum  14 characters',
-            changUrl: 'Your name too short. Minimum 13 characters',
-            changCardNumber: 'Your card number too short. Minimum 25 characters',
-            changShortDesc: 'Your short description too short. Minimum 10 characters',
-            changDesc: 'Your description too short. Minimum 50 characters',
+            changName: lang.addfrouder_form_message_warn_name,
+            changLast: lang.addfrouder_form_message_warn_lastName,
+            changNumber: lang.addfrouder_form_message_warn_phone,
+            changUrl: lang.addfrouder_form_message_warn_url,
+            changCardNumber: lang.addfrouder_form_message_warn_cardNumber,
+            changShortDesc: lang.addfrouder_form_message_warn_shortDesc,
+            changDesc: lang.addfrouder_form_message_warn_desc,
         };
         let status = null;
         let oldStae = this.state.error;
@@ -379,13 +383,13 @@ class AddFrouderScreen extends Component {
 const styles = StyleSheet.create({
     body:{
         flex: 1,
-        paddingTop: 40,
-        paddingBottom: 30,
         backgroundColor: '#e8ebf4',
     },
     container: {
         justifyContent: 'flex-start',
         alignItems: 'center',
+        paddingTop: 40,
+        paddingBottom: 30,
 
     },
     title:{
@@ -431,7 +435,8 @@ const styles = StyleSheet.create({
         color:  inputText,
     },
     error:{
-      color:'#993322'
+      color:'#993322',
+        textAlign: 'center'
     },
 
 });
