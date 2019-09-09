@@ -21,7 +21,6 @@ let addItem = item => {
 // Set color constants START
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
-let statusError = 0 ;
 // Set color constants END
 
 class AddFrouderScreen extends Component {
@@ -56,7 +55,6 @@ class AddFrouderScreen extends Component {
             ],
             errorShortDesc:'',
         };
-        titleScreen = 'Fuck '
     };
 
     clearInput= ()=>{
@@ -70,54 +68,54 @@ class AddFrouderScreen extends Component {
             froudDescription: ''
         })
     };
-    hadlerChangeName  = (val)=>{
+    handlerChangeName  = (val)=>{
         this.setState({
             froudName: val
         });
         this.validateForm(val, 'name');
 
     };
-    hadlerChangeNameLast = (val)=>{
+    handlerChangeNameLast = (val)=>{
         this.setState({
             froudNameLast: val
         });
         this.validateForm(val, 'lastName');
     };
-    hadlerChangeNumber = (val)=>{
+    handlerChangeNumber = (val)=>{
         this.setState({
             froudNumber: val
         });
         this.validateForm(val, 'phone');
     };
-    hadlerChangeUrl = (val)=>{
+    handlerChangeUrl = (val)=>{
         this.setState({
             froudUrl: val
         });
         this.validateForm(val, 'url');
     };
-    hadlerCreditCardNumber = (val)=>{
+    handlerCreditCardNumber = (val)=>{
         this.setState({
             froudCreditCard: val
         });
         this.validateForm(val, 'cardNumber');
     };
 
-    hadlerShortDescription = (val)=>{
+    handlerShortDescription = (val)=>{
             this.setState({
                 froudShortDescription: val
             });
         this.validateForm(val, 'shDesc');
     };
 
-    hadlerDescription = (val)=>{
+    handlerDescription = (val)=>{
             this.setState({
                 froudDescription: val
             });
         this.validateForm(val, 'desc');
     };
 
-    checkAllFields=()=>{
-        let  checkInpTut = [this.state.froudName,
+    checkAllInputFields=()=>{
+        let  checkInpTut = [ this.state.froudName,
             this.state.froudNameLast,
             this.state.froudNumber,
             this.state.froudUrl,
@@ -137,7 +135,7 @@ class AddFrouderScreen extends Component {
     };
 
     submitInformation = () => {
-        let statusForm = this.checkAllFields();
+        let statusForm = this.checkAllInputFields();
         if (statusForm=== true) {
             addItem({
                 'name': this.state.froudName,
@@ -166,7 +164,6 @@ class AddFrouderScreen extends Component {
         };
         let status = null;
         let oldStae = this.state.error;
-        // console.log(oldStae);
 
         switch (type) {
             case 'name':
@@ -260,7 +257,6 @@ class AddFrouderScreen extends Component {
     };
 
     render(){
-
         return (
             <SafeAreaView style={styles.body}>
                 <ScrollView>
@@ -313,21 +309,21 @@ class AddFrouderScreen extends Component {
 
 
                     <TextInput style={styles.inputName}
-                               onChangeText={this.hadlerChangeName}
+                               onChangeText={this.handlerChangeName}
                                placeholder={this.state.lang.addfrouder_name}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudName}
                                maxLength={10}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerChangeNameLast}
+                               onChangeText={this.handlerChangeNameLast}
                                placeholder={this.state.lang.addfrouder_lastname}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudNameLast}
                                maxLength={20}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerChangeNumber}
+                               onChangeText={this.handlerChangeNumber}
                                placeholder={this.state.lang.addfrouder_number}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudNumber}
@@ -335,14 +331,14 @@ class AddFrouderScreen extends Component {
                                keyboardType={'number-pad'}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerChangeUrl}
+                               onChangeText={this.handlerChangeUrl}
                                placeholder={this.state.lang.addfrouder_url}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudUrl}
                                maxLength={40}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerCreditCardNumber}
+                               onChangeText={this.handlerCreditCardNumber}
                                placeholder={this.state.lang.addfrouder_card}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudCreditCard}
@@ -350,7 +346,7 @@ class AddFrouderScreen extends Component {
                                keyboardType={'numeric'}
                     />
                     <TextInput style={styles.inputShortDescription}
-                               onChangeText={this.hadlerShortDescription}
+                               onChangeText={this.handlerShortDescription}
                                placeholder={this.state.lang.addfrouder_shortdesc}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudShortDescription}
@@ -359,7 +355,7 @@ class AddFrouderScreen extends Component {
                                multiline={true}
                     />
                     <TextInput style={styles.inputDescription}
-                               onChangeText={this.hadlerDescription}
+                               onChangeText={this.handlerDescription}
                                placeholder={this.state.lang.addfrouder_description}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudDescription}
@@ -439,6 +435,5 @@ const styles = StyleSheet.create({
     },
 
 });
-
 
 export default AddFrouderScreen;
