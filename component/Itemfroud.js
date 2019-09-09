@@ -25,7 +25,7 @@ class Itemfroud extends Component {
                 <View style={styles.itemsList}>
                     {this.props.items.map((item, index) => {
                         return (
-                            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('SingleItem',{
+                            <TouchableOpacity key={index} onPress={()=>{this.props.navigation.navigate('SingleItem',{
                                 shortDesc:item.shortdesc,
                                 description:item.desc,
                                 phone:item.phone,
@@ -34,7 +34,7 @@ class Itemfroud extends Component {
                                 card:item.card,
                                 url:item.url,
                             })}}>
-                                <View key={index} style={styles.frouder} >
+                                <View  style={styles.frouder} >
                                     <Text style={styles.frouder__text}> {item.shortdesc}</Text>
                                     <Text  ellipsizeMode={'tail'} style={styles.frouder__description}>{this.cutLong(item.desc, this.props.maxSymbol)}</Text>
                                     <View style={styles.frouder__additionalInformation}>
