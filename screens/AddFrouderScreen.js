@@ -74,46 +74,46 @@ class AddFrouderScreen extends Component {
         this.setState({
             froudName: val
         });
-        this.validateForm(val, 'name');
+        this.validateForm(val, 'name',true);
 
     };
     handlerChangeNameLast = (val)=>{
         this.setState({
             froudNameLast: val
         });
-        this.validateForm(val, 'lastName');
+        this.validateForm(val, 'lastName',true);
     };
     handlerChangeNumber = (val)=>{
         this.setState({
             froudNumber: val
         });
-        this.validateForm(val, 'phone');
+        this.validateForm(val, 'phone',false);
     };
     handlerChangeUrl = (val)=>{
         this.setState({
             froudUrl: val
         });
-        this.validateForm(val, 'url');
+        this.validateForm(val, 'url','');
     };
     handlerCreditCardNumber = (val)=>{
         this.setState({
             froudCreditCard: val
         });
-        this.validateForm(val, 'cardNumber');
+        this.validateForm(val, 'cardNumber',false);
     };
 
     handlerShortDescription = (val)=>{
             this.setState({
                 froudShortDescription: val
             });
-        this.validateForm(val, 'shDesc');
+        this.validateForm(val, 'shDesc',true);
     };
 
     handlerDescription = (val)=>{
             this.setState({
                 froudDescription: val
             });
-        this.validateForm(val, 'desc');
+        this.validateForm(val, 'desc',true);
     };
 
     checkAllInputFields=()=>{
@@ -155,7 +155,17 @@ class AddFrouderScreen extends Component {
         }
 
     };
-    validateForm=(item,type)=>{
+    validateForm=(item,type,str)=>{
+        item = item.replace(/ /g, "");
+        if (str===true){
+            item = item.replace(/[^A-Za-zА-Яа-яЁё]/g, "");
+        }else if(str===false){
+            item= item.replace(/[^0-9.]/g, "");
+        }else {
+            console.log('URL');
+        }
+
+        console.log(item);
         const lang = this.state.lang;
         let messages = {
             changName: lang.addfrouder_form_message_warn_name,
@@ -171,7 +181,7 @@ class AddFrouderScreen extends Component {
 
         switch (type) {
             case 'name':
-                if (item.length > 5){
+                if (item.length >= 3){
                     status = '';
                     oldStae.name = status ;
                 }else{
@@ -182,7 +192,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'lastName':
-                if (item.length > 5){
+                if (item.length >= 3 ){
                     status = '';
                     oldStae.lastName = status ;
                 }else{
@@ -193,7 +203,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'phone':
-                if (item.length > 14){
+                if (item.length >= 10){
                     status = '';
                     oldStae.phone = status ;
                 }else{
@@ -204,7 +214,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'url':
-                if (item.length > 13){
+                if (item.length >= 33){
                     status = '';
                     oldStae.url = status ;
                 }else{
@@ -215,7 +225,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'cardNumber':
-                if (item.length > 13){
+                if (item.length >= 16){
                     status = '';
                     oldStae.cardNumber = status ;
                 }else{
@@ -226,7 +236,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'shDesc':
-                if (item.length > 10){
+                if (item.length >= 10){
                     status = '';
                     oldStae.shortDesc = status ;
                 }else{
@@ -238,7 +248,7 @@ class AddFrouderScreen extends Component {
                 break;
 
             case 'desc':
-                if (item.length > 50){
+                if (item.length >= 50){
                     status = '';
                     oldStae.desc = status ;
                 }else{
