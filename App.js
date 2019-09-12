@@ -12,6 +12,9 @@ import {
 } from 'react-native';
 
 
+import LoadingScreen from './screens/LoadingScreen';
+import SignUpScreent from './screens/SignUpScreent';
+import LoginScreen from './screens/LoginScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import AddFrouderScreen from './screens/AddFrouderScreen';
 import SearchScreen from './screens/SearchScreen';
@@ -23,6 +26,9 @@ import SingleItem from "./screens/SingleItem";
 
 
 const AppSwitchNavigator = createSwitchNavigator({
+  Loading: {screen: LoadingScreen},
+  SignUp: {screen: SignUpScreent},
+  Login: {screen: LoginScreen},
   Welcome: {screen: WelcomeScreen}
 },
     {

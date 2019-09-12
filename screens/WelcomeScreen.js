@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import firebase from 'react-native-firebase'
 
 import Localization from '../component/Localization' ;
 
@@ -7,11 +8,15 @@ class WelcomeScreen extends Component {
     constructor(props){
         super(props);
         this.state= {
-            lang: ' nothing '
+            lang: ' nothing ',
+            currentUser: null
         }
     }
     componentDidMount (){
         this.setState({lang: Localization()});
+        const { currentUser } = firebase.auth()
+
+        this.setState({ currentUser })
     }
 
 
@@ -47,6 +52,9 @@ class WelcomeScreen extends Component {
                     >
                         <Text  style={styles.textButton}>{this.state.lang.main_aboutApp}</Text>
                     </TouchableOpacity>
+                    <Text>
+                        Hi {this.state.currentUser && this.state.currentUser.email}!
+                    </Text>
                 </View>
             </SafeAreaView>
         );
