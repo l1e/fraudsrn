@@ -21,7 +21,6 @@ let addItem = item => {
 // Set color constants START
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
-let statusError = 0 ;
 // Set color constants END
 
 class AddFrouderScreen extends Component {
@@ -56,8 +55,9 @@ class AddFrouderScreen extends Component {
             ],
             errorShortDesc:'',
         };
-        titleScreen = 'Fuck '
+
     };
+
 
     clearInput= ()=>{
         this.setState({
@@ -70,53 +70,53 @@ class AddFrouderScreen extends Component {
             froudDescription: ''
         })
     };
-    hadlerChangeName  = (val)=>{
+    handlerChangeName  = (val)=>{
         this.setState({
             froudName: val
         });
-        this.validateForm(val, 'name');
+        this.validateForm(val, 'name',true);
 
     };
-    hadlerChangeNameLast = (val)=>{
+    handlerChangeNameLast = (val)=>{
         this.setState({
             froudNameLast: val
         });
-        this.validateForm(val, 'lastName');
+        this.validateForm(val, 'lastName',true);
     };
-    hadlerChangeNumber = (val)=>{
+    handlerChangeNumber = (val)=>{
         this.setState({
             froudNumber: val
         });
-        this.validateForm(val, 'phone');
+        this.validateForm(val, 'phone',false);
     };
-    hadlerChangeUrl = (val)=>{
+    handlerChangeUrl = (val)=>{
         this.setState({
             froudUrl: val
         });
-        this.validateForm(val, 'url');
+        this.validateForm(val, 'url','');
     };
-    hadlerCreditCardNumber = (val)=>{
+    handlerCreditCardNumber = (val)=>{
         this.setState({
             froudCreditCard: val
         });
-        this.validateForm(val, 'cardNumber');
+        this.validateForm(val, 'cardNumber',false);
     };
 
-    hadlerShortDescription = (val)=>{
+    handlerShortDescription = (val)=>{
             this.setState({
                 froudShortDescription: val
             });
-        this.validateForm(val, 'shDesc');
+        this.validateForm(val, 'shDesc',true);
     };
 
-    hadlerDescription = (val)=>{
+    handlerDescription = (val)=>{
             this.setState({
                 froudDescription: val
             });
-        this.validateForm(val, 'desc');
+        this.validateForm(val, 'desc',true);
     };
 
-    lenghtError=()=>{
+    checkAllInputFields=()=>{
         let  checkInpTut = [ this.state.froudName,
             this.state.froudNameLast,
             this.state.froudNumber,
@@ -124,39 +124,21 @@ class AddFrouderScreen extends Component {
             this.state.froudCreditCard,
             this.state.froudShortDescription,
             this.state.froudDescription];
-        let ketState = ['name','lastName','phone','url','cardNumber','shDesc','desc'];
+        let inputKeys = ['name','lastName','phone','url','cardNumber','shDesc','desc'];
         let statusInput = [];
         for (let i=0 ; checkInpTut.length > i ; i++ ){
-            statusInput.push(this.validateForm(checkInpTut[i],ketState[i]));
+            statusInput.push(this.validateForm(checkInpTut[i],inputKeys[i]));
         }
 
-        let checkAllTrue= statusInput.every(function (elem) {
+        let checkIsAllTrue= statusInput.every(function (elem) {
            return elem === true;
         });
-        //
-        //
-        // console.log(statusInput);
-        // console.log('status:'+checkAllTrue);
-        // var obj = (Object.values(this.state.error));
-        // console.log(obj);
-        // // let arr =[] ;
-        // // for (prop in this.state.error) {
-        // //     console.log(prop);
-        // //     console.log(prop[0]);
-        // //     arr.push(prop[0].length);
-        // // }
-        // let getLang = obj.map(function(el){
-        //     return el.length;
-        // }) ;
-        // let longData = getLang.reduce(function(el,sum){
-        //     return sum+el;
-        // });
-        // return longData;
-        return checkAllTrue;
+        return checkIsAllTrue;
     };
 
     submitInformation = () => {
-        let statusForm = this.lenghtError();
+        let statusForm = this.checkAllInputFields();
+        const lang = this.state.lang;
         if (statusForm=== true) {
             addItem({
                 'name': this.state.froudName,
@@ -166,30 +148,40 @@ class AddFrouderScreen extends Component {
                 'card': this.state.froudCreditCard,
                 'shortdesc': this.state.froudShortDescription,
                 'desc': this.state.froudDescription});
-            Alert.alert('Мошенник добавлен','Мошенник добавлен');
+            Alert.alert(lang.addfrouder_form_success,lang.addfrouder_form_success_details);
             this.clearInput();
         }else{
-            Alert.alert("Ошибка","Заполните оязательные поля");
+            Alert.alert(lang.addfrouder_form_error,lang.addfrouder_form_error_details);
         }
 
     };
-    validateForm=(item,type)=>{
+    validateForm=(item,type,str)=>{
+        item = item.replace(/ /g, "");
+        if (str===true){
+            item = item.replace(/[^A-Za-zА-Яа-яЁё]/g, "");
+        }else if(str===false){
+            item= item.replace(/[^0-9.]/g, "");
+        }else {
+            console.log('URL');
+        }
+
+        console.log(item);
+        const lang = this.state.lang;
         let messages = {
-            changName: 'Your name too short. Minimum 5 characters',
-            changLast: 'Your last name too short. Minimum 5 characters',
-            changNumber: 'Your number too short. Minimum  14 characters',
-            changUrl: 'Your name too short. Minimum 13 characters',
-            changCardNumber: 'Your card number too short. Minimum 25 characters',
-            changShortDesc: 'Your short description too short. Minimum 10 characters',
-            changDesc: 'Your description too short. Minimum 50 characters',
+            changName: lang.addfrouder_form_message_warn_name,
+            changLast: lang.addfrouder_form_message_warn_lastName,
+            changNumber: lang.addfrouder_form_message_warn_phone,
+            changUrl: lang.addfrouder_form_message_warn_url,
+            changCardNumber: lang.addfrouder_form_message_warn_cardNumber,
+            changShortDesc: lang.addfrouder_form_message_warn_shortDesc,
+            changDesc: lang.addfrouder_form_message_warn_desc,
         };
         let status = null;
         let oldStae = this.state.error;
-        // console.log(oldStae);
 
         switch (type) {
             case 'name':
-                if (item.length > 5){
+                if (item.length >= 3){
                     status = '';
                     oldStae.name = status ;
                 }else{
@@ -200,7 +192,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'lastName':
-                if (item.length > 5){
+                if (item.length >= 3 ){
                     status = '';
                     oldStae.lastName = status ;
                 }else{
@@ -211,7 +203,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'phone':
-                if (item.length > 14){
+                if (item.length >= 10){
                     status = '';
                     oldStae.phone = status ;
                 }else{
@@ -222,7 +214,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'url':
-                if (item.length > 13){
+                if (item.length >= 33){
                     status = '';
                     oldStae.url = status ;
                 }else{
@@ -233,7 +225,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'cardNumber':
-                if (item.length > 13){
+                if (item.length >= 16){
                     status = '';
                     oldStae.cardNumber = status ;
                 }else{
@@ -244,7 +236,7 @@ class AddFrouderScreen extends Component {
                 }
                 break;
             case 'shDesc':
-                if (item.length > 10){
+                if (item.length >= 10){
                     status = '';
                     oldStae.shortDesc = status ;
                 }else{
@@ -256,7 +248,7 @@ class AddFrouderScreen extends Component {
                 break;
 
             case 'desc':
-                if (item.length > 50){
+                if (item.length >= 50){
                     status = '';
                     oldStae.desc = status ;
                 }else{
@@ -279,7 +271,6 @@ class AddFrouderScreen extends Component {
     };
 
     render(){
-
         return (
             <SafeAreaView style={styles.body}>
                 <ScrollView>
@@ -332,21 +323,21 @@ class AddFrouderScreen extends Component {
 
 
                     <TextInput style={styles.inputName}
-                               onChangeText={this.hadlerChangeName}
+                               onChangeText={this.handlerChangeName}
                                placeholder={this.state.lang.addfrouder_name}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudName}
                                maxLength={10}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerChangeNameLast}
+                               onChangeText={this.handlerChangeNameLast}
                                placeholder={this.state.lang.addfrouder_lastname}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudNameLast}
                                maxLength={20}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerChangeNumber}
+                               onChangeText={this.handlerChangeNumber}
                                placeholder={this.state.lang.addfrouder_number}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudNumber}
@@ -354,14 +345,14 @@ class AddFrouderScreen extends Component {
                                keyboardType={'number-pad'}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerChangeUrl}
+                               onChangeText={this.handlerChangeUrl}
                                placeholder={this.state.lang.addfrouder_url}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudUrl}
                                maxLength={40}
                     />
                     <TextInput style={styles.input}
-                               onChangeText={this.hadlerCreditCardNumber}
+                               onChangeText={this.handlerCreditCardNumber}
                                placeholder={this.state.lang.addfrouder_card}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudCreditCard}
@@ -369,7 +360,7 @@ class AddFrouderScreen extends Component {
                                keyboardType={'numeric'}
                     />
                     <TextInput style={styles.inputShortDescription}
-                               onChangeText={this.hadlerShortDescription}
+                               onChangeText={this.handlerShortDescription}
                                placeholder={this.state.lang.addfrouder_shortdesc}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudShortDescription}
@@ -378,7 +369,7 @@ class AddFrouderScreen extends Component {
                                multiline={true}
                     />
                     <TextInput style={styles.inputDescription}
-                               onChangeText={this.hadlerDescription}
+                               onChangeText={this.handlerDescription}
                                placeholder={this.state.lang.addfrouder_description}
                                placeholderTextColor={placeHolderColor}
                                value={this.state.froudDescription}
@@ -402,13 +393,13 @@ class AddFrouderScreen extends Component {
 const styles = StyleSheet.create({
     body:{
         flex: 1,
-        paddingTop: 40,
-        paddingBottom: 30,
         backgroundColor: '#e8ebf4',
     },
     container: {
         justifyContent: 'flex-start',
         alignItems: 'center',
+        paddingTop: 40,
+        paddingBottom: 30,
 
     },
     title:{
@@ -454,10 +445,10 @@ const styles = StyleSheet.create({
         color:  inputText,
     },
     error:{
-      color:'#993322'
+      color:'#993322',
+        textAlign: 'center'
     },
 
 });
-
 
 export default AddFrouderScreen;

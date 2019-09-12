@@ -32,7 +32,9 @@ class FiltrFroudListScreen extends Component {
         for (let i= 0 ; item.length > i  ;i++){
             //Transform Object to string for check exist words.
             let objToString = item[i].card+' '+item[i].desc+' '+ item[i].firstname+' '+item[i].lastname+' '+ item[i].phone;
-            if (objToString.includes(filtredWord)){
+            let toLoverCaseList = objToString.toLowerCase();
+            let toLoverCaseWords= filtredWord.toLowerCase();
+            if (toLoverCaseList.includes(toLoverCasewords)){
                 filtredData.push(item[i]);
             }
         }
