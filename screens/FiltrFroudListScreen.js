@@ -5,9 +5,11 @@ import Localization from "../component/Localization";
 
 import Itemfroud from '../component/Itemfroud';
 
-import {db} from '../firebase/config';
-let itemsRef = db.ref('/items');
+import firebase from 'react-native-firebase';
+let base = firebase.database();
 
+let itemsRef = base.ref('/items');
+// console.log(base);
 
 
 class FiltrFroudListScreen extends Component {
@@ -34,7 +36,7 @@ class FiltrFroudListScreen extends Component {
             let objToString = item[i].card+' '+item[i].desc+' '+ item[i].firstname+' '+item[i].lastname+' '+ item[i].phone;
             let toLoverCaseList = objToString.toLowerCase();
             let toLoverCaseWords= filtredWord.toLowerCase();
-            if (toLoverCaseList.includes(toLoverCasewords)){
+            if (toLoverCaseList.includes(toLoverCaseWords)){
                 filtredData.push(item[i]);
             }
         }

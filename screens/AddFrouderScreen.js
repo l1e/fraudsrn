@@ -3,10 +3,11 @@ import {Text, View,StyleSheet, TextInput, Button, ScrollView,SafeAreaView , Aler
 
 import Localization from "../component/Localization";
 
-import {db} from '../firebase/config';
+import firebase from 'react-native-firebase';
+let base = firebase.database();
 
 let addItem = item => {
-    db.ref('/items').push({
+    base.ref('/items').push({
         firstname: item.name,
         lastname: item.lastname ,
         phone: item.phone ,

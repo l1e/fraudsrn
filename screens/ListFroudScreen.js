@@ -2,10 +2,13 @@ import React,{Component} from 'react';
 import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator, AsyncStorage} from 'react-native';
 
 import Itemfroud from '../component/Itemfroud';
+import firebase from 'react-native-firebase';
 
-import {db} from '../firebase/config';
 import Localization from "../component/Localization";
-let itemsRef = db.ref('/items');
+let base = firebase.database();
+
+let itemsRef = base.ref('/items');
+console.log(base);
 
 
 class ListFroudScreen extends Component {
