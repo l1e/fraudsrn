@@ -9,6 +9,8 @@ let base = firebase.database();
 let itemsRef = base.ref('/items');
 console.log(base);
 
+let placeHolderColor= '#909497';
+let inputText= '#25282b';
 
 class LoginScreen extends Component {
 
@@ -27,33 +29,42 @@ class LoginScreen extends Component {
     };
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Login</Text>
-                {this.state.errorMessage &&
-                <Text style={{ color: 'red' }}>
-                    {this.state.errorMessage}
-                </Text>}
-                <TextInput
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    placeholder="Email"
-                    onChangeText={email => this.setState({ email })}
-                    value={this.state.email}
-                />
-                <TextInput
-                    secureTextEntry
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    placeholder="Password"
-                    onChangeText={password => this.setState({ password })}
-                    value={this.state.password}
-                />
-                <Button title="Login" onPress={this.handleLogin} />
-                <Button
-                    title="Don't have an account? Sign Up"
-                    onPress={() => this.props.navigation.navigate('SignUp')}
-                />
-            </View>
+            <SafeAreaView style={styles.body}>
+                <View style={styles.content}>
+                    <Text style={styles.title}>Login</Text>
+                    {this.state.errorMessage &&
+                    <Text style={{ color: 'red' }}>
+                        {this.state.errorMessage}
+                    </Text>}
+                    <View style={styles.form}>
+                        <TextInput
+                            style={styles.textInput}
+                            autoCapitalize="none"
+                            placeholder="Email"
+                            onChangeText={email => this.setState({ email })}
+                            value={this.state.email}
+                        />
+                        <TextInput
+                            secureTextEntry
+                            style={styles.textInput}
+                            autoCapitalize="none"
+                            placeholder="Password"
+                            onChangeText={password => this.setState({ password })}
+                            value={this.state.password}
+                        />
+                        <Button
+                            title="Login" o
+                            nPress={this.handleLogin}
+                            color="#5499C7"
+                        />
+                        <Button
+                            title="Don't have an account? Sign Up"
+                            onPress={() => this.props.navigation.navigate('SignUp')}
+                            color="#5499C7"
+                        />
+                    </View>
+                </View>
+            </SafeAreaView>
         )
     }
 }
@@ -72,6 +83,15 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 20,
     },
+    title:{
+        textAlign: 'center'
+
+    },
+    form:{
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 10,
+    },
     loadingInner:{
         flex: 1,
         width: '100%',
@@ -83,12 +103,16 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     textInput: {
-        height: 40,
-        width: '90%',
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginTop: 8
-    }
+        justifyContent:'center',
+        alignItems: 'center',
+        width: '70%',
+        borderBottomColor: '#909497',
+        borderBottomWidth: 2,
+        color:  inputText,
+        marginBottom: 5,
+
+    },
+
 });
 
 export default LoginScreen;

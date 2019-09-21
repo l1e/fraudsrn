@@ -14,7 +14,7 @@ class WelcomeScreen extends Component {
     }
     componentDidMount (){
         this.setState({lang: Localization()});
-        const { currentUser } = firebase.auth()
+        const { currentUser } = firebase.auth();
 
         this.setState({ currentUser })
     }
