@@ -24,8 +24,17 @@ class LoginScreen extends Component {
 
     state = { email: '', password: '', errorMessage: null };
     handleLogin = () => {
-        // TODO: Firebase stuff...
-        console.log('handleLogin')
+        console.log('I clicked');
+        const { email, password } = this.state;
+        if (this.state.email.length  < 4 || this.state.password.length < 7 ){
+            this.setState({errorMessage:"Write data to fields. In password should exist 8 symbols."});
+            return;
+        }
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => this.props.navigation.navigate('Main'))
+            .catch(error => this.setState({ errorMessage: error.message }))
     };
     render() {
         return (
@@ -33,7 +42,7 @@ class LoginScreen extends Component {
                 <View style={styles.content}>
                     <Text style={styles.title}>Login</Text>
                     {this.state.errorMessage &&
-                    <Text style={{ color: 'red' }}>
+                    <Text style={styles.errorMessage}>
                         {this.state.errorMessage}
                     </Text>}
                     <View style={styles.form}>
@@ -53,8 +62,8 @@ class LoginScreen extends Component {
                             value={this.state.password}
                         />
                         <Button
-                            title="Login" o
-                            nPress={this.handleLogin}
+                            title="Login"
+                            onPress={this.handleLogin}
                             color="#5499C7"
                         />
                         <Button
@@ -80,7 +89,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
-        paddingTop: 10,
+        paddingTop: 40,
         paddingBottom: 20,
     },
     title:{
@@ -91,16 +100,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         marginTop: 10,
-    },
-    loadingInner:{
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    fill:{
-        flex: 1,
+        marginBottom: 10
     },
     textInput: {
         justifyContent:'center',
@@ -112,6 +112,12 @@ const styles = StyleSheet.create({
         marginBottom: 5,
 
     },
+    errorMessage:{
+        textAlign: 'center',
+        color: '#ff1037',
+        marginTop: 10,
+        marginBottom: 10
+    }
 
 });
 

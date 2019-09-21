@@ -31,6 +31,10 @@ class SignUpScreen extends Component {
         }
     };
     handleSignUp = () => {
+        if (this.state.email.length  < 4 || this.state.password.length < 7 ){
+            this.setState({errorMessage:"Write data to fields. In password should exist 8 symbols."});
+            return;
+        };
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -44,7 +48,7 @@ class SignUpScreen extends Component {
                 <View style={styles.content}>
                     <Text style={styles.title}>Sign Up</Text>
                     {this.state.errorMessage &&
-                    <Text style={{ color: 'red' }}>
+                    <Text style={styles.errorMessage}>
                         {this.state.errorMessage}
                     </Text>}
                     <View style={styles.form}>
@@ -105,6 +109,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         marginTop: 10,
+        marginBottom: 10
     },
     textInput:{
         justifyContent:'center',
@@ -118,7 +123,13 @@ const styles = StyleSheet.create({
     },
     button:{
         marginTop: 15,
-    }
+    },
+    errorMessage:{
+        textAlign: 'center',
+        color: '#ff1037',
+        marginTop: 10,
+        marginBottom: 10
+    },
 
 });
 

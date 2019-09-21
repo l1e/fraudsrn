@@ -18,6 +18,13 @@ class WelcomeScreen extends Component {
 
         this.setState({ currentUser })
     }
+    signOut= ()=>{
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+        }).catch(function(error) {
+            // An error happened.
+        });
+    };
 
 
     static navigationOptions = {
@@ -55,6 +62,12 @@ class WelcomeScreen extends Component {
                     <Text>
                         Hi {this.state.currentUser && this.state.currentUser.email}!
                     </Text>
+                    <TouchableOpacity
+                        onPress={this.signOut}
+                        style={styles.aboutus}
+                    >
+                        <Text  style={styles.textButton}>Sign Out</Text>
+                    </TouchableOpacity>
                 </View>
             </SafeAreaView>
         );
