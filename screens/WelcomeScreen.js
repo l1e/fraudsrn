@@ -59,9 +59,9 @@ class WelcomeScreen extends Component {
                     >
                         <Text  style={styles.textButton}>{this.state.lang.main_aboutApp}</Text>
                     </TouchableOpacity>
-                    <Text>
-                        Hi {this.state.currentUser && this.state.currentUser.email}!
-                    </Text>
+                    {/*<Text>*/}
+                        {/*Hi {this.state.currentUser && this.state.currentUser.email}!*/}
+                    {/*</Text>*/}
                     <TouchableOpacity
                         onPress={this.signOut}
                         style={styles.aboutus}
