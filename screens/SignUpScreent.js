@@ -1,14 +1,9 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator, AsyncStorage, TextInput, Button} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator, AsyncStorage, TextInput, Button, TouchableOpacity} from 'react-native';
 
-import Itemfroud from '../component/Itemfroud';
 import firebase from 'react-native-firebase';
 
 import Localization from "../component/Localization";
-let base = firebase.database();
-
-let itemsRef = base.ref('/items');
-console.log(base);
 
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
@@ -27,33 +22,46 @@ class SignUpScreen extends Component {
         this.state = {
             email: '',
             password: '',
-            errorMessage: null
+            errorMessage: null,
+            lang: Localization(),
         }
     };
     handleSignUp = () => {
         if (this.state.email.length  < 4 || this.state.password.length < 7 ){
-            this.setState({errorMessage:"Write data to fields. In password should exist 8 symbols."});
+            this.setState({errorMessage:this.state.lang.SginUp_errorShort});
             return;
         };
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => this.props.navigation.navigate('Welcome'))
-            .catch(error => this.setState({ errorMessage: error.message }))
+            .catch((error) => {
+                switch (error.code){
+                    case 'auth/invalid-email':
+                        console.log('1');
+                        this.setState({ errorMessage: this.state.lang.SginUp_errorEmail});
+                        break;
+                    case 'auth/unknown':
+                        this.setState({ errorMessage: error.message});
+                        break;
+                    default:
+                        this.setState({ errorMessage: error.message});
+                }
+            })
     };
 
     render() {
         return (
             <SafeAreaView style={styles.body}>
                 <View style={styles.content}>
-                    <Text style={styles.title}>Sign Up</Text>
+                    <Text style={styles.title}>{this.state.lang.SginUp_title}</Text>
                     {this.state.errorMessage &&
                     <Text style={styles.errorMessage}>
                         {this.state.errorMessage}
                     </Text>}
                     <View style={styles.form}>
                         <TextInput
-                            placeholder="Email"
+                            placeholder={this.state.lang.form_email}
                             placeholderTextColor={placeHolderColor}
                             autoCapitalize="none"
                             style={styles.textInput}
@@ -62,23 +70,26 @@ class SignUpScreen extends Component {
                         />
                         <TextInput
                             secureTextEntry
-                            placeholder="Password"
+                            placeholder={this.state.lang.form_password}
                             placeholderTextColor={placeHolderColor}
                             autoCapitalize="none"
                             style={styles.textInput}
                             onChangeText={password => this.setState({ password })}
                             value={this.state.password}
                         />
-                        <Button title="Sign Up" onPress={this.handleSignUp}
-                            color="#5499C7"
+
+                        <TouchableOpacity
                             style={styles.button}
-                        />
-                        <Button
-                            title="Already have an account? Login"
+                            onPress={this.handleSignUp}
+                        >
+                            <Text style={styles.buttonText}>{this.state.lang.SginUp_submit}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.button}
                             onPress={() => this.props.navigation.navigate('Login')}
-                            color="#5499C7"
-                            style={styles.button}
-                        />
+                        >
+                            <Text style={styles.buttonText}>{this.state.lang.SginUp_haveAccount}  </Text>
+                        </TouchableOpacity>
                     </View>
 
                 </View>
@@ -122,13 +133,24 @@ const styles = StyleSheet.create({
 
     },
     button:{
-        marginTop: 15,
+        marginTop: 10,
+    },
+    buttonText:{
+      backgroundColor:  '#5499C7',
+        color:'#fff',
+        paddingTop: 6,
+        paddingBottom: 6,
+        paddingLeft: 8,
+        paddingRight: 8,
+        textTransform: 'uppercase'
     },
     errorMessage:{
         textAlign: 'center',
         color: '#ff1037',
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 
 });

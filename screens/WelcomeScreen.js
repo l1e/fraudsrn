@@ -66,7 +66,7 @@ class WelcomeScreen extends Component {
                         onPress={this.signOut}
                         style={styles.aboutus}
                     >
-                        <Text  style={styles.textButton}>Sign Out</Text>
+                        <Text  style={styles.textButton}>{this.state.lang.main_signOut}</Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
