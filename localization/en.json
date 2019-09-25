@@ -7,6 +7,7 @@
   "SginUp_haveAccount": "Already have an account? Login",
   "SginUp_errorShort": "Write data to fields. In password should exist min 8 symbols.",
   "SginUp_errorEmail": "The email address is badly formatted.",
+  "SginUp_errorUsed": "The email address is already in use by another account.",
   "Login_title": "Login",
   "Login_submit": "Login",
   "Login_haveAccount": "Don't have an account? Sign Up",

@@ -23,6 +23,7 @@ class SignUpScreen extends Component {
             email: '',
             password: '',
             errorMessage: null,
+            errorCode: null,
             lang: Localization(),
         }
     };
@@ -41,11 +42,14 @@ class SignUpScreen extends Component {
                         console.log('1');
                         this.setState({ errorMessage: this.state.lang.SginUp_errorEmail});
                         break;
+                    case 'auth/email-already-in-use':
+                        this.setState({ errorMessage: this.state.lang.SginUp_errorUsed  ,errorCode:error.code});
+                        break;
                     case 'auth/unknown':
                         this.setState({ errorMessage: error.message});
                         break;
                     default:
-                        this.setState({ errorMessage: error.message});
+                        this.setState({ errorMessage: error.message, errorCode: error.code});
                 }
             })
     };
@@ -58,6 +62,7 @@ class SignUpScreen extends Component {
                     {this.state.errorMessage &&
                     <Text style={styles.errorMessage}>
                         {this.state.errorMessage}
+                        {/*{this.state.errorCode}*/}
                     </Text>}
                     <View style={styles.form}>
                         <TextInput
