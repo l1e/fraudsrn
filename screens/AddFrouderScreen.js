@@ -5,6 +5,9 @@ import ImagePicker from 'react-native-image-picker' ;
 import Localization from "../component/Localization";
 
 import database from '@react-native-firebase/database';
+import storage from '@react-native-firebase/storage';
+
+import uuid from 'uuid/v4';
 
 let base = database();
 
@@ -34,7 +37,15 @@ class AddFrouderScreen extends Component {
             title: Localization().addfrouder_title ,
         };
     };
-
+    componentDidMount() {
+      var stor =   storage().ref("post/girls.jpg");
+        // this.setState({froudImgUri:stor});
+        //
+        stor.getDownloadURL()
+            .then((url) => {
+                this.setState({froudImgUri: url});
+            });
+    }
 
     constructor(props) {
         super(props);
@@ -47,6 +58,10 @@ class AddFrouderScreen extends Component {
             froudShortDescription: '',
             froudDescription: '',
             froudImgPath:'',
+            froudImgUri:'',
+            froudImgUrii:'',
+            uploading: false,
+            froudImgName:"",
             lang: Localization(),
             error: [
                 {name:''},
@@ -302,10 +317,72 @@ class AddFrouderScreen extends Component {
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
                 this.setState({
                     froudImgPath: source,
+                    froudImgName: source.fileName
                 });
+                console.log('Hello world');
+                console.log(source);
+
+                console.log('Hello world');
             }
         });
 
+        let war= '';
+
+
+    };
+    UploadImg=()=>{
+        const file = this.state.froudImgPath.uri;
+        console.log("file path is "+file);
+        var filename = this.state.froudImgName;
+        var storageRef = storage().ref();
+        var metadata = {
+            contentType: 'image/jpeg'
+        };
+        this.setState({ uploading: true });
+        // storage()
+        //     .putFile(this.state.froudImgPath)
+        var uploadTask = storageRef.child('post/' + filename).put(file, metadata);
+
+
+        uploadTask.on(storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+            function(snapshot) {
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case storage.TaskState.PAUSED: // or 'paused'
+                        console.log('Upload is paused');
+                        break;
+                    case storage.TaskState.RUNNING: // or 'running'
+                        console.log('Upload is running');
+                        break;
+                }
+            }, function(error) {
+
+                // A full list of error codes is available at
+                // https://firebase.google.com/docs/storage/web/handle-errors
+                switch (error.code) {
+                    case 'storage/unauthorized':
+                        // User doesn't have permission to access the object
+                        console.log('User doesn\'t have permission to access the object');
+                        break;
+
+                    case 'storage/canceled':
+                        // User canceled the upload
+                        console.log('User canceled the upload');
+                        break;
+
+                    case 'storage/unknown':
+                        // Unknown error occurred, inspect error.serverResponse
+                        console.log('Unknown error occurred, inspect error.serverResponse');
+                        break;
+                }
+            }, function() {
+                // Upload completed successfully, now we can get the download URL
+                uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    console.log('File available at', downloadURL);
+                });
+            });
     };
     render(){
         return (
@@ -424,8 +501,22 @@ class AddFrouderScreen extends Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
+                    <View style={styles.button}>
+                        <TouchableOpacity
+                            style={styles.addImg_button}
+                            onPress={this.UploadImg}
+                        >
+                            <Text style={styles.addImg_text}>
+                                UploadImg
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                     <Image
-                        source={{ uri: this.state.froudImgPath.uri }}
+                        source={{ uri: this.state.froudImgUri }}
+                        style={{ width: 250, height: 250 }}
+                    />
+                    <Image
+                        source={{ uri: this.state.froudImgUrii }}
                         style={{ width: 250, height: 250 }}
                     />
                     <View style={styles.button}>
