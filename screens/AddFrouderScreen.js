@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {Text, View,StyleSheet, TextInput, Button, ScrollView,SafeAreaView , Alert} from 'react-native';
+import {Text, View,Image, StyleSheet, TextInput, Button, ScrollView,SafeAreaView , Alert, TouchableOpacity} from 'react-native';
+import ImagePicker from 'react-native-image-picker' ;
 
 import Localization from "../component/Localization";
 
@@ -44,6 +45,7 @@ class AddFrouderScreen extends Component {
             froudCreditCard: '',
             froudShortDescription: '',
             froudDescription: '',
+            froudImgPath:'',
             lang: Localization(),
             error: [
                 {name:''},
@@ -68,7 +70,8 @@ class AddFrouderScreen extends Component {
             froudUrl:'',
             froudCreditCard: '',
             froudShortDescription: '',
-            froudDescription: ''
+            froudDescription: '',
+            froudImgPath:''
         })
     };
     handlerChangeName  = (val)=>{
@@ -270,7 +273,39 @@ class AddFrouderScreen extends Component {
             return false;
         }
     };
+    handlerAddImage=()=>{
+      console.log('Clicked on add image');
+        var options = {
+            title: 'Select Image',
+            customButtons: [
+                { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+            ],
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+        ImagePicker.showImagePicker(options, response => {
+            console.log('Response = ', response);
 
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+                alert(response.customButton);
+            } else {
+                let source = response;
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+                this.setState({
+                    froudImgPath: source,
+                });
+            }
+        });
+
+    };
     render(){
         return (
             <SafeAreaView style={styles.body}>
@@ -379,6 +414,20 @@ class AddFrouderScreen extends Component {
                                multiline={true}
                     />
                     <View style={styles.button}>
+                        <TouchableOpacity
+                            style={styles.addImg_button}
+                            onPress={this.handlerAddImage}
+                        >
+                            <Text style={styles.addImg_text}>
+                                Add img
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <Image
+                        source={{ uri: this.state.froudImgPath.uri }}
+                        style={{ width: 250, height: 250 }}
+                    />
+                    <View style={styles.button}>
                         <Button
                             onPress={this.submitInformation}
                             title={this.state.lang.sendinfo}
@@ -449,6 +498,16 @@ const styles = StyleSheet.create({
       color:'#993322',
         textAlign: 'center'
     },
+    addImg_button:{
+        backgroundColor:"#5499C7",
+        paddingTop: 5,
+        paddingLeft: 10,
+        paddingBottom: 5,
+        paddingRight: 10,
+    },
+    addImg_text:{
+        color:"#ffffff"
+    }
 
 });
 
