@@ -12,13 +12,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import firebase from 'react-native-firebase';
+import auth from  '@react-native-firebase/auth';
 
 import Localization from "../component/Localization";
-let base = firebase.database();
-
-let itemsRef = base.ref('/items');
-console.log(base);
 
 let placeHolderColor= '#909497';
 let inputText= '#25282b';
@@ -48,8 +44,7 @@ class LoginScreen extends Component {
             this.setState({errorMessage:this.state.lang.Login_errorShort});
             return;
         }
-        firebase
-            .auth()
+            auth()
             .signInWithEmailAndPassword(email, password)
             .then(() => this.props.navigation.navigate('Main'))
             .catch((error) => {

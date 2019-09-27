@@ -2,10 +2,11 @@ import React,{Component} from 'react';
 import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator, AsyncStorage} from 'react-native';
 
 import Itemfroud from '../component/Itemfroud';
-import firebase from 'react-native-firebase';
+
+import database from '@react-native-firebase/database';
 
 import Localization from "../component/Localization";
-let base = firebase.database();
+let base = database();
 
 let itemsRef = base.ref('/items');
 console.log(base);

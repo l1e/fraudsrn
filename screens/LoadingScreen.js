@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
-import firebase from 'react-native-firebase';
 
+import auth from  '@react-native-firebase/auth';
 
 export default class LoadingScreen extends React.Component {
     componentDidMount() {
-        firebase.auth().onAuthStateChanged(user => {
+        auth().onAuthStateChanged(user => {
             console.log(user);
             this.props.navigation.navigate(user ? 'Welcome' : 'SignUp')
         })
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     }
-})
+});

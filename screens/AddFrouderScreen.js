@@ -4,8 +4,9 @@ import ImagePicker from 'react-native-image-picker' ;
 
 import Localization from "../component/Localization";
 
-import firebase from 'react-native-firebase';
-let base = firebase.database();
+import database from '@react-native-firebase/database';
+
+let base = database();
 
 let addItem = item => {
     base.ref('/items').push({

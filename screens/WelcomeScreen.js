@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
-import firebase from 'react-native-firebase'
+
+import auth from '@react-native-firebase/auth';
 
 import Localization from '../component/Localization' ;
 
@@ -14,12 +15,12 @@ class WelcomeScreen extends Component {
     }
     componentDidMount (){
         this.setState({lang: Localization()});
-        const { currentUser } = firebase.auth();
+        const { currentUser } =  auth();
 
         this.setState({ currentUser })
     }
     signOut= ()=>{
-        firebase.auth().signOut().then(function() {
+        auth().signOut().then(function() {
             // Sign-out successful.
         }).catch(function(error) {
             // An error happened.

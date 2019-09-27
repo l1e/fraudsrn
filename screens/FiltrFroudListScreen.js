@@ -5,8 +5,9 @@ import Localization from "../component/Localization";
 
 import Itemfroud from '../component/Itemfroud';
 
-import firebase from 'react-native-firebase';
-let base = firebase.database();
+import database from '@react-native-firebase/database';
+
+let base = database();
 
 let itemsRef = base.ref('/items');
 // console.log(base);

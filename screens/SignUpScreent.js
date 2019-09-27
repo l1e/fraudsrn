@@ -1,7 +1,10 @@
 import React,{Component} from 'react';
 import {Text, View, StyleSheet, ScrollView, SafeAreaView, ActivityIndicator, AsyncStorage, TextInput, Button, TouchableOpacity} from 'react-native';
 
-import firebase from 'react-native-firebase';
+
+import firebase from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
+
 
 import Localization from "../component/Localization";
 
@@ -31,9 +34,8 @@ class SignUpScreen extends Component {
         if (this.state.email.length  < 4 || this.state.password.length < 7 ){
             this.setState({errorMessage:this.state.lang.SginUp_errorShort});
             return;
-        };
-        firebase
-            .auth()
+        }
+            auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => this.props.navigation.navigate('Welcome'))
             .catch((error) => {
