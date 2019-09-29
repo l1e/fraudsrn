@@ -25,6 +25,7 @@ import  {createSwitchNavigator, createAppContainer} from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SingleItem from "./screens/SingleItem";
 import AddImgScreen from "./screens/AddImgScreen";
+import MapScreen from "./screens/MapScreen";
 
 
 const AppSwitchNavigator = createSwitchNavigator({
@@ -53,6 +54,7 @@ const appStackNavigator = createStackNavigator({
   AboutApp: {screen:AboutApp},
   SingleItem:{screen: SingleItem},
   AddImg:{screen: AddImgScreen},
+  Map:{screen: MapScreen},
 });
 
 

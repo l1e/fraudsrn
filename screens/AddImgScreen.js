@@ -15,11 +15,12 @@ import storage from '@react-native-firebase/storage';
 import uuid from 'uuid/v4'; // Import UUID to generate UUID
 
 const options = {
-    title: 'Select Image',
+    title: 'Select Avatar',
+    customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
     storageOptions: {
         skipBackup: true,
-        path: 'images'
-    }
+        path: 'images',
+    },
 };
 const ImageRow = ({ image, windowWidth, popImage }) => (
     <View>
@@ -62,7 +63,7 @@ export default class AddImgScreen extends Component {
             } else {
                 const source = { uri: response.uri };
                 this.setState({
-                    imgSource: source,
+                    imgSource: response.path,
                     imageUri: response.uri
                 });
                 console.log(response);

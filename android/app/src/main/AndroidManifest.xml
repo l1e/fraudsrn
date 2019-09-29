@@ -4,9 +4,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -30,7 +31,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAhEinEuiO3IXu7YxlgShb1fv9I47WA3Y8"/>
     </application>
+    <uses-feature android:name="android.hardware.camera" android:required="true"
 
+    />
 
 
 </manifest>
