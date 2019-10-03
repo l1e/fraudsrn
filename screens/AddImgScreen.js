@@ -43,6 +43,7 @@ export default class AddImgScreen extends Component {
         AsyncStorage.getItem('images')
             .then(data => {
                 images = JSON.parse(data) || [];
+                console.log(images);
                 this.setState({
                     images: images
                 });

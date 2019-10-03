@@ -20,10 +20,10 @@ class MapScreen extends Component {
                 <MapView
                     style={styles.map}
                     initialRegion={{
-                        latitude: 50.421747,
-                        longitude: 30.553164,
-                        latitudeDelta: 0.05,
-                        longitudeDelta: 0.0221,
+                        latitude: 48.447728,
+                        longitude: 35.028824,
+                        latitudeDelta: 0.01,
+                        longitudeDelta: 0.001,
                     }}
                 >
                     <MapView.Marker
