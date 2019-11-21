@@ -2,33 +2,34 @@
 
 
 1)In-app you can authorize on the app.
+
 <img src='/img/screenshots/14.jpg'  width="328px">
-![Alt text](/img/screenshots/15.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/16.jpg?raw=true "Optional Title")
+<img src='/img/screenshots/15.jpg'  width="328px">
+<img src='/img/screenshots/16.jpg'  width="328px">
 
 
 2)Add information about fraud.
-![Alt text](/img/screenshots/5.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/6.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/9.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/12.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/13.jpg?raw=true "Optional Title")
+<img src='/img/screenshots/5.jpg'  width="328px">
+<img src='/img/screenshots/6.jpg'  width="328px">
+<img src='/img/screenshots/9.jpg'  width="328px">
+<img src='/img/screenshots/12.jpg'  width="328px">
+<img src='/img/screenshots/13.jpg'  width="328px">
 
 
 3)Search information about fraud.
 
-![Alt text](/img/screenshots/2.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/3.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/8.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/11.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/7.jpg?raw=true "Optional Title")
+<img src='/img/screenshots/2.jpg'  width="328px">
+<img src='/img/screenshots/3.jpg'  width="328px">
+<img src='/img/screenshots/8.jpg'  width="328px">
+<img src='/img/screenshots/11.jpg'  width="328px">
+<img src='/img/screenshots/7.jpg'  width="328px">
 
 
 4) Research current fraudsters.
-![Alt text](/img/screenshots/1.jpg?raw=true "Optional Title")
-![Alt text](/img/screenshots/4.jpg?raw=true "Optional Title")
 
-![Alt text](/img/screenshots/10.jpg?raw=true "Optional Title")
+<img src='/img/screenshots/1.jpg'  width="328px">
+<img src='/img/screenshots/4.jpg'  width="328px">
+<img src='/img/screenshots/10.jpg'  width="328px">
 
 
 
