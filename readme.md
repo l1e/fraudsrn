@@ -1,7 +1,7 @@
 <p align="center">Here the App where we can add information about fraud.</p>
 
 
-1)In-app you can authorize on the app.
+1)In-app you can authorize on the app.<br>
 
 <img src='/img/screenshots/14.jpg'  width="328px">
 <img src='/img/screenshots/15.jpg'  width="328px">
@@ -9,8 +9,9 @@
 <img src='/img/screenshots/16.jpg'  width="328px">
 
 
-2)Add information about fraud.
 
+
+2)Add information about fraud.<br>
 <img src='/img/screenshots/5.jpg'  width="328px">
 <img src='/img/screenshots/6.jpg'  width="328px">
 
@@ -21,7 +22,7 @@
 
 
 
-3)Search information about fraud.
+3)Search information about fraud.<br>
 
 <img src='/img/screenshots/2.jpg'  width="328px">
 <img src='/img/screenshots/3.jpg'  width="328px">
@@ -33,7 +34,7 @@
 
 
 
-4) Research current fraudsters.
+4) Research current fraudsters.<br>
 
 <img src='/img/screenshots/1.jpg'  width="328px">
 <img src='/img/screenshots/4.jpg'  width="328px">
