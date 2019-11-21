@@ -60,18 +60,12 @@ class WelcomeScreen extends Component {
                     >
                         <Text  style={styles.textButton}>{this.state.lang.main_aboutApp}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() =>this.props.navigation.navigate('AddImg')}
-                        style={styles.aboutus}
-                    >
-                        <Text  style={styles.textButton}>Add image</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() =>this.props.navigation.navigate('Map')}
-                        style={styles.aboutus}
-                    >
-                        <Text  style={styles.textButton}>Map</Text>
-                    </TouchableOpacity>
+                    {/*<TouchableOpacity*/}
+                        {/*onPress={() =>this.props.navigation.navigate('Map')}*/}
+                        {/*style={styles.aboutus}*/}
+                    {/*>*/}
+                        {/*<Text  style={styles.textButton}>Map</Text>*/}
+                    {/*</TouchableOpacity>*/}
                     {/*<Text>*/}
                         {/*Hi {this.state.currentUser && this.state.currentUser.email}!*/}
                     {/*</Text>*/}

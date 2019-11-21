@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import {Text, View,Image, StyleSheet, TextInput, Button, ScrollView,SafeAreaView , Alert, TouchableOpacity} from 'react-native';
-import ImagePicker from 'react-native-image-picker' ;
+import {Text, View, StyleSheet, TextInput, Button, ScrollView,SafeAreaView , Alert, TouchableOpacity} from 'react-native';
 
 import Localization from "../component/Localization";
 
