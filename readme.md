@@ -2,7 +2,7 @@
 
 
 1)In-app you can authorize on the app.
-<img src='/img/screenshots/14.jpg' >
+<img src='/img/screenshots/14.jpg'  width="328px">
 ![Alt text](/img/screenshots/15.jpg?raw=true "Optional Title")
 ![Alt text](/img/screenshots/16.jpg?raw=true "Optional Title")
 
