@@ -5,30 +5,39 @@
 
 <img src='/img/screenshots/14.jpg'  width="328px">
 <img src='/img/screenshots/15.jpg'  width="328px">
+
 <img src='/img/screenshots/16.jpg'  width="328px">
 
 
 2)Add information about fraud.
+
 <img src='/img/screenshots/5.jpg'  width="328px">
 <img src='/img/screenshots/6.jpg'  width="328px">
+
 <img src='/img/screenshots/9.jpg'  width="328px">
 <img src='/img/screenshots/12.jpg'  width="328px">
+
 <img src='/img/screenshots/13.jpg'  width="328px">
+
 
 
 3)Search information about fraud.
 
 <img src='/img/screenshots/2.jpg'  width="328px">
 <img src='/img/screenshots/3.jpg'  width="328px">
+
 <img src='/img/screenshots/8.jpg'  width="328px">
 <img src='/img/screenshots/11.jpg'  width="328px">
+
 <img src='/img/screenshots/7.jpg'  width="328px">
+
 
 
 4) Research current fraudsters.
 
 <img src='/img/screenshots/1.jpg'  width="328px">
 <img src='/img/screenshots/4.jpg'  width="328px">
+
 <img src='/img/screenshots/10.jpg'  width="328px">
 
 
