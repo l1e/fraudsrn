@@ -1,3 +1,39 @@
+<p align="center">Here the App where we can add information about fraud.</p>
+
+
+1)In-app you can authorize on the app.
+![Alt text](/img/screenshots/14.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/15.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/16.jpg?raw=true "Optional Title")
+
+
+2)Add information about fraud.
+![Alt text](/img/screenshots/5.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/6.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/9.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/12.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/13.jpg?raw=true "Optional Title")
+
+
+3)Search information about fraud.
+
+![Alt text](/img/screenshots/2.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/3.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/8.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/11.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/7.jpg?raw=true "Optional Title")
+
+
+4) Research current fraudsters.
+![Alt text](/img/screenshots/1.jpg?raw=true "Optional Title")
+![Alt text](/img/screenshots/4.jpg?raw=true "Optional Title")
+
+![Alt text](/img/screenshots/10.jpg?raw=true "Optional Title")
+
+
+
+
+<b>Issue with app:</b><br>
 1) If app dont build with apk for smartphone, make  comand in your app dir - ' <code>  cd android && ./gradlew clean && ./gradlew assembleRelease </code> '. It took from https://github.com/facebook/react-native/issues/6745 .
 
 2) If error <source> ERROR: Unable to determine the current character, it is not a string, number, array, or object
