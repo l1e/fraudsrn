@@ -3,7 +3,7 @@
 <br><br>
 1)In-app you can authorize on the app.<br>
 
-<p  float="left">
+<p  float="left" align="center">
 <img src='/img/screenshots/14.jpg'  width="220px">
 <img src='/img/screenshots/15.jpg'  width="220px">
 <img src='/img/screenshots/16.jpg'  width="220px">
@@ -12,11 +12,11 @@
 
 <br><br><br>
 2)Add information about fraud.<br>
-<p  float="left">
+<p  float="left" align="center">
 <img src='/img/screenshots/5.jpg'  width="220px">
 <img src='/img/screenshots/6.jpg'  width="220px">
 </p>
-<p  float="left">
+<p  float="left" align="center">
 <img src='/img/screenshots/9.jpg'  width="220px">
 <img src='/img/screenshots/12.jpg'  width="220px">
 </p>
@@ -25,7 +25,7 @@
 
 <br><br><br>
 3)Search information about fraud.<br>
-<p  float="left">
+<p  float="left" align="center">
 <img src='/img/screenshots/2.jpg'  width="220px">
 <img src='/img/screenshots/3.jpg'  width="220px">
 </p>
@@ -38,7 +38,7 @@
 
 <br><br><br>
 4) Research current fraudsters.<br>
-<p  float="left">
+<p  float="left" align="center">
 <img src='/img/screenshots/1.jpg'  width="220px">
 <img src='/img/screenshots/4.jpg'  width="220px">
 
