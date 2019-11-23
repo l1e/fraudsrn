@@ -3,9 +3,10 @@
 <br><br>
 1)In-app you can authorize on the app.<br>
 
+<p  float="left">
 <img src='/img/screenshots/14.jpg'  width="328px">
 <img src='/img/screenshots/15.jpg'  width="328px">
-
+</p>
 <img src='/img/screenshots/16.jpg'  width="328px">
 
 
@@ -48,7 +49,7 @@
 1) If app dont build with apk for smartphone, make  comand in your app dir - ' <code>  cd android && ./gradlew clean && ./gradlew assembleRelease </code> '. It took from https://github.com/facebook/react-native/issues/6745 .
 
 2) If error <source> ERROR: Unable to determine the current character, it is not a string, number, array, or object
-                     
+
                      The current character read is 'E' with an int value of 69
                      Unable to determine the current character, it is not a string, number, array, or object
                      line number 1
