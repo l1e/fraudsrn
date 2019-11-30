@@ -1,8 +1,8 @@
 
-# <p align="center">Here the App where we can add information about fraud.</p>
+## <p align="center">Here the App where we can add information about fraud.</p>
 <br>
 
-## Run on Windows 10 on android simulator.
+## Run on Windows 10 on android simulator
 
 #### 1) Open an Git in folder project , then run the following command:
 ```
@@ -49,7 +49,7 @@ Wait a few minutes until your project is building.
  <br> 
  <br> 
   
-## Screenshots.
+## Screenshots
 
 
 <br><br>
