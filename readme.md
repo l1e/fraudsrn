@@ -1,5 +1,8 @@
 
-##Run on Windows 10 on android simulator.
+# <p align="center">Here the App where we can add information about fraud.</p>
+<br>
+
+## Run on Windows 10 on android simulator.
 
 #### 1) Open an Git in folder project , then run the following command:
 ```
@@ -41,10 +44,13 @@ npm i
  ```
 react-native run-android
  ```
- 
+ <br>
+Wait a few minutes until your project is building. 
+ <br> 
+ <br> 
+  
 ## Screenshots.
 
-<p align="center">Here the App where we can add information about fraud.</p>
 
 <br><br>
 ####  1)In-app you can authorize by email.<br>
