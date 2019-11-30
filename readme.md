@@ -1,7 +1,53 @@
+
+##Run on Windows 10 on android simulator.
+
+#### 1) Open an Git in folder project , then run the following command:
+```
+git clone https://github.com/l1e/fraudsrn.git
+```
+
+#### 2) For go to the current folder where you have cloned code, open an Administrator Command Prompt (right click Command Prompt and select "Run as Administrator"), then run the following command:
+```
+cd /d yourPath\fraudsrn 
+```
+Where 'yourPath' is the path to your folder.
+
+
+#### 3) Then in current cmd and folder we install packages,run the following command:
+```
+npm i
+```
+
+#### 4) Use Android Studio to open your project with path:
+```
+./yourPath/fraudsrn/android 
+```
+
+#### 5) Add your debug.keystore  file for debugging in folder:
+```
+./yourPath/fraudsrn/android/app
+```
+
+#### 6) Add your firebase file google-services.json to folder:
+```
+./yourPath/fraudsrn/android/app
+```
+
+#### 7) In Android Studio run simulator:
+<img src='/img/screenshots/run_simulator.png'  width="326px">
+
+#### 8) Then we run our project, in current project folder we following command:
+ 
+ ```
+react-native run-android
+ ```
+ 
+## Screenshots.
+
 <p align="center">Here the App where we can add information about fraud.</p>
 
 <br><br>
-1)In-app you can authorize on the app.<br>
+####  1)In-app you can authorize by email.<br>
 
 <p  float="left" align="center">
 <img src='/img/screenshots/14.jpg'  width="220px">
@@ -11,7 +57,7 @@
 
 
 <br><br><br>
-2)Add information about fraud.<br>
+####  2)Add information about fraud.<br>
 <p  float="left" align="center">
     <img src='/img/screenshots/5.jpg'  width="220px">
     <img src='/img/screenshots/6.jpg'  width="220px">
@@ -25,7 +71,7 @@
 </p>
 
 <br><br><br>
-3)Search information about fraud.<br>
+#### 3)Search information about fraud.<br>
 <p  float="left" align="center">
     <img src='/img/screenshots/2.jpg'  width="220px">
     <img src='/img/screenshots/3.jpg'  width="220px">
@@ -36,17 +82,16 @@
 </p>
 
 <br><br><br>
-4) Research current fraudsters.<br>
-<p  float="left" align="center">
-    <img src='/img/screenshots/1.jpg'  width="220px">
-    <img src='/img/screenshots/4.jpg'  width="220px">
+####  4) Read more about fraud.<br>
 <p  float="left" align="center">
     <img src='/img/screenshots/10.jpg'  width="220px">
+<p  float="left" align="center">
+    <img src='/img/screenshots/4.jpg'  width="220px">
 </p>
 
 
 
-<b>Issue with app:</b><br>
+## Issue with app
 1) If app dont build with apk for smartphone, make  comand in your app dir - ' <code>  cd android && ./gradlew clean && ./gradlew assembleRelease </code> '. It took from https://github.com/facebook/react-native/issues/6745 .
 
 2) If error <source> ERROR: Unable to determine the current character, it is not a string, number, array, or object
